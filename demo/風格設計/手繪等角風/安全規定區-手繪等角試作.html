@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>樹蔭下的行前說明｜手繪等角試作</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1ede3;color:#384e43;font-family:"Microsoft JhengHei",sans-serif}main{width:min(1200px,100%);margin:26px auto;padding:0 22px}header{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 20px}.eyebrow{color:#82917b;font-size:10px;letter-spacing:.2em}h1{font-size:25px;font-weight:600;letter-spacing:.12em;margin:7px 0}header p{font-size:12px;color:#81907e;margin:0}.chapter{font-family:Georgia,serif;color:#b5a27d;font-size:42px}figure{position:relative;margin:0;border:1px solid #d5d9c8;border-radius:18px;overflow:hidden;background:#e9ecde;box-shadow:0 15px 50px #52684e10}canvas{display:block;width:100%;height:auto;touch-action:none;outline:none}canvas:focus-visible{outline:3px solid #648e7b;outline-offset:-4px}.hud{position:absolute;left:22px;top:20px;background:#fffdf2ec;border:1px solid #d5dac5;padding:12px 16px;border-radius:10px;pointer-events:none}.hud strong{font-size:13px}.hud p{font-size:11px;color:#7a8b75;margin:5px 0 0}.hud i{display:inline-block;width:7px;height:7px;background:#78a694;border-radius:50%;margin-right:7px}footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 4px;font-size:12px;color:#7b8974}kbd{border:1px solid #ccd2bf;background:#fffdf5;padding:3px 6px;border-radius:4px;font:inherit}button{border:1px solid #b7c5ac;border-radius:7px;color:#50694f;background:#f9f9ee;padding:8px 12px;cursor:pointer}#status{font-size:12px;min-height:18px;color:#5c7961}.pad{position:absolute;bottom:14px;left:14px;display:none;grid-template-columns:repeat(3,38px);gap:4px}.pad button{background:#fffdf0df;font-size:17px;touch-action:none}.pad button:first-child{grid-column:2}.pad button:nth-child(2){grid-column:1}.note{position:absolute;right:18px;bottom:18px;width:210px;background:#fffdf0f0;border:1px solid #d6cfb6;padding:15px 18px;border-radius:9px;pointer-events:none}.note h2{font-size:14px;margin:0 0 8px}.note p{font-size:12px;line-height:1.8;margin:0;color:#72816b}[hidden]{display:none!important}@media(max-width:650px){main{padding:0 8px;margin:10px auto}h1{font-size:20px}header{padding:10px 6px 14px}.hud{top:10px;left:10px;padding:8px 11px}.hud p{display:none}footer{align-items:start;font-size:10px}footer .keys{display:none}.pad{display:grid}canvas{height:auto}.note{width:180px;right:10px;bottom:10px;padding:10px}.note p{font-size:11px}}
+</style></head><body><main><header><div><div class="eyebrow">FIELD NOTES / 場地見習</div><h1>樹蔭下的行前說明</h1><p>安全規定區 · 手繪等角場景</p></div><div class="chapter">01</div></header>
+<figure><canvas id="scene" width="1100" height="740" tabindex="0" aria-label="可移動的手繪等角庭院。使用方向鍵或 WASD 移動，也可點選地面前往。"></canvas><div class="hud"><strong><i></i>安全規定區</strong><p>走近告示牌，閱讀行前提醒。</p></div><aside class="note" id="note" hidden><h2>行前提醒</h2><p>聽從現場人員指示<br>依序集合，保持通道暢通<br>確認所需裝備</p></aside><div class="pad" aria-label="方向控制"><button data-key="ArrowUp" aria-label="向上">↑</button><button data-key="ArrowLeft" aria-label="向左">←</button><button data-key="ArrowDown" aria-label="向下">↓</button><button data-key="ArrowRight" aria-label="向右">→</button></div></figure>
+<footer><span><span class="keys"><kbd>W A S D</kbd> / 方向鍵　·　</span>點地面移動</span><span id="status" role="status" aria-live="polite">探索這一小片庭院。</span><button id="reset">回到入口</button></footer></main>
+<script>
+'use strict';
+const canvas=document.getElementById('scene'),c=canvas.getContext('2d');
+const SW=1100,SH=740,TX=45,TY=22.5,OX=514,OY=196;
+const P=(x,y,z=0)=>[OX+(x-y)*TX,OY+(x+y)*TY-z];
+const unproject=(u,v)=>{const a=(u-OX)/TX,b=(v-OY)/TY;return{x:(a+b)/2,y:(b-a)/2}};
+let rng=1;function random(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296}
+const palette={line:'#566653',grass:'#91a780',stone:'#d9d5bd',wood:'#ba9364',leaf:'#789768'};
+function path(points,fill,stroke='#5b695d',width=1){c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.lineJoin='round';c.stroke()}}
+function line(points,color,width=1){c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.lineCap='round';c.lineJoin='round';c.stroke()}
+function ellipse(x,y,rx,ry,color,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=1;c.stroke()}}
+function round(x,y,w,h,r,color,stroke){c.beginPath();c.roundRect(x,y,w,h,r);c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=1;c.stroke()}}
+function txt(s,x,y,size=12,color='#4c6454',align='left'){c.font=`600 ${size}px "Microsoft JhengHei",sans-serif`;c.fillStyle=color;c.textAlign=align;c.fillText(s,x,y)}
+function plane(x,y,w,d,z,color,stroke){path([P(x,y,z),P(x+w,y,z),P(x+w,y+d,z),P(x,y+d,z)],color,stroke)}
+function box(x,y,w,d,z,h,colors){path([P(x,y+d,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x,y+d,z+h)],colors[1]);path([P(x+w,y,z),P(x+w,y+d,z),P(x+w,y+d,z+h),P(x+w,y,z+h)],colors[2]);plane(x,y,w,d,z+h,colors[0]);}
+function shadow(x,y,rx,ry){const [u,v]=P(x,y);const g=c.createRadialGradient(u,v,1,u,v,rx);g.addColorStop(0,'#3f604634');g.addColorStop(1,'#3f604600');ellipse(u,v,rx,ry,g)}
+function grass(x,y,size=1){const [u,v]=P(x,y);for(let i=0;i<6;i++){const a=(i-2.5)*3*size;line([[u+a,v],[u+a*1.3,v-5*size-random()*5*size]],i%2?'#6e8b63':'#a8b788',1.1)}}
+function ground(){
+ rng=427;const g=c.createLinearGradient(0,0,0,740);g.addColorStop(0,'#e8ecdf');g.addColorStop(1,'#dbe4d2');c.fillStyle=g;c.fillRect(0,0,1100,740);
+ for(let i=0;i<1600;i++)ellipse(random()*1100,random()*740,random()*1.3,.6,'#6d8a5910');
+ shadow(5,4.8,430,195);box(-.15,-.15,10.3,8.3,-19,19,['#a0b08b','#8a9a74','#7c906d']);
+ for(let y=0;y<8;y++)for(let x=0;x<10;x++){
+ const paved=x>=1&&x<9&&y>=1&&y<7||x>=4&&x<=6&&y===7;
+ if(paved){const jitter=()=>random()*.06;const points=[P(x+.035+jitter(),y+.035),P(x+.965,y+.035+jitter()),P(x+.965-jitter(),y+.965),P(x+.035,y+.965-jitter())];path(points,['#dedbc6','#d8d5bf','#e3dfca','#d3d2bb'][Math.floor(random()*4)],'#b7bea5',1.3);line([points[3],points[0],points[1]],'#f1edda',1.5);
+ c.save();c.clip();for(let j=0;j<14;j++){const p=P(x+random(),y+random());line([[p[0],p[1]],[p[0]+3+random()*6,p[1]-1]],'#8f98831c',.7)}c.restore();
+ }else{plane(x,y,1,1,0,'#9eb28b',null);for(let j=0;j<9;j++)grass(x+random(),y+random(),.5);}
+ }
+ // Warm ochre painted edge and four unobtrusive gathering marks.
+ for(const [x,y,w,d] of [[2.8,3.8,4.6,.045],[2.8,6.6,4.6,.045],[2.8,3.8,.045,2.8],[7.4,3.8,.045,2.85]])plane(x,y,w,d,1,'#c5ac6d',null);
+ for(const [x,y] of [[4,4.6],[5.7,4.6],[4,5.8],[5.7,5.8]]){plane(x-.2,y,.4,.035,1,'#b6a16b',null)}
+ // A few weeds between stones anchor the scene to its garden.
+ for(const [x,y] of [[1.05,2],[8.95,4],[1,5.9],[7.9,1.1],[8.9,6.9]])grass(x,y,.55);
+}
+function wall(){
+ for(let row=0;row<3;row++)for(let x=0;x<10;x++){
+ const xx=x+(row%2)*.5,ww=Math.min(.97,10-xx);box(xx,0,ww,.3,row*15,14,['#d5d7c4','#b3beaa','#95a791']);
+ const p=P(xx+.12,.31,row*15+5);line([[p[0],p[1]],[p[0]+12,p[1]+6]],'#e5e7d155',1);
+ }for(let x=0;x<10;x++)box(x-.035,-.08,.99,.45,45,6,['#e5e3cb','#bdc7af','#a6b69c']);
+ for(let y=.35;y<6;y++){box(0,y,.28,.96,0,31,['#cdd3ba','#b2bfa5','#9aac92']);box(-.055,y,.42,.99,31,5,['#e0dfc6','#c0c9ad','#a8b89a']);}
+}
+function planter(x,y,w=1.3){box(x,y,w,.7,0,17,['#c0b99b','#a7aa8d','#8d9b7f']);plane(x+.08,y+.08,w-.16,.54,18,'#756f51');for(let j=0;j<8;j++){const p=P(x+.15+random()*(w-.3),y+.2+random()*.3,18);line([[p[0],p[1]],[p[0]-2,p[1]-15]],'#66835a',1);ellipse(p[0]-5,p[1]-9,5,2.5,'#8b9f70');ellipse(p[0],p[1]-15,3.1,3.1,j%3?'#e5ce8f':'#e7a581');ellipse(p[0],p[1]-15,1.2,1.2,'#ad985e');}}
+function bush(x,y,s=1){const p=P(x,y);shadow(x,y,30*s,12*s);for(let i=0;i<16;i++){const px=p[0]+(random()-.5)*40*s,py=p[1]-7*s-random()*15*s;ellipse(px,py,8*s,6*s,['#6c8d65','#7c9c70','#91a97b','#a5b88a'][i%4]);line([[px-3,py],[px+3,py-3]],'#c1cc9c77',.8)}}
+function tree(x,y,s=1){const p=P(x,y);shadow(x+.3,y+.3,62*s,22*s);c.save();c.translate(...p);c.scale(s,s);
+ path([[-7,1],[-5,-66],[-17,-91],[-12,-96],[-2,-74],[9,-98],[13,-93],[4,-64],[7,0]],'#ae9870','#7a8062',1.4);line([[-2,-4],[-1,-67],[-10,-87]],'#d3ba85',2);line([[3,-25],[1,-43]],'#8d805e',1);
+ const clusters=[[-30,-85,28,21],[-34,-111,27,23],[-9,-130,30,24],[24,-116,31,23],[34,-89,26,22],[4,-96,38,29]];
+ clusters.forEach(([a,b,w,h],i)=>{ellipse(a+2,b+4,w,h,'#648563');ellipse(a,b,w-1,h-2,['#8da67b','#a5b98c','#b3c197','#96ae80','#88a374','#9fb68a'][i]);for(let j=0;j<15;j++){const t=random()*Math.PI*2,r=Math.sqrt(random());const xx=a+Math.cos(t)*r*w*.85,yy=b+Math.sin(t)*r*h*.8;ellipse(xx,yy,3+random()*3,1.7,j%3?'#c2ce9b65':'#63855e33');}});
+ line([[-43,-119],[-37,-127],[-29,-129]],'#d5dcb1',1.2);c.restore();
+}
+function board(x,y){shadow(x+.8,y,60,15);const p=P(x,y);c.save();c.translate(...p);c.transform(1,.5,0,1,0,0);
+ round(0,-91,8,94,2,'#a38257','#6c7256');round(125,-91,8,94,2,'#a38257','#6c7256');line([[2,-82],[2,-4]],'#d2b27c',1.5);line([[127,-82],[127,-4]],'#d2b27c',1.5);
+ round(-7,-109,147,86,3,'#c6a573','#777f62');round(-2,-104,137,75,2,'#f3ecd4','#9a9f7b');round(4,-98,125,22,1,'#648975');txt('安全規定區',67,-82,16,'#fff5d9','center');
+ ['聽從指示','依序集合','確認裝備'].forEach((t,i)=>{ellipse(16,-65+i*13,3,3,'#bfaa75');txt(t,27,-61+i*13,10,'#6c7d5e')});
+ for(let i=0;i<5;i++)line([[-4+i*30,-108],[-4+i*30+12,-108]],'#e4c797',1);c.restore();
+}
+function table(x,y){shadow(x+1.1,y+.5,78,22);for(const xx of [x+.1,x+2.1])for(const yy of [y+.1,y+.65])box(xx,yy,.12,.12,0,29,['#ba996d','#a3875e','#7c7757']);box(x-.05,y-.05,2.45,.95,29,5,['#d4b382','#b39569','#958260']);for(let k=0;k<4;k++)line([P(x,y+k*.23,35),P(x+2.3,y+k*.23,35)],'#ac8d6166',1);
+ for(let i=0;i<12;i++){const xx=x+.1+random()*2.2,yy=y+random()*.8;line([P(xx,yy,35.5),P(Math.min(x+2.3,xx+.2),yy,35.5)],'#ecd2a066',1)}
+ for(const xx of [x+.45,x+1.05]){const p=P(xx,y+.45,36);c.save();c.translate(...p);c.beginPath();c.arc(0,-6,9,Math.PI,0);c.strokeStyle='#5c6d5a';c.lineWidth=4;c.stroke();round(-11,-7,6,13,3,'#baa05d','#626f55');round(5,-7,6,13,3,'#d2b873','#626f55');c.restore();}
+ plane(x+1.5,y+.12,.5,.55,35.5,'#9b9471');plane(x+1.53,y+.16,.43,.46,36,'#f7efd7');for(let i=0;i<4;i++)line([P(x+1.6,y+.22+i*.08,37),P(x+1.88,y+.22+i*.08,37)],'#9da78c',.7);
+ box(x+2,y+.2,.35,.4,35,11,['#a2b797','#78987b','#64856c']);
+}
+function bench(x,y){for(const xx of [x+.15,x+1.65])box(xx,y+.1,.13,.32,0,14,['#a9936d','#8e805f','#707757']);box(x,y,1.95,.55,14,4,['#ccb384','#ab966e','#91845f']);line([P(x,y+.27,19),P(x+1.95,y+.27,19)],'#ab956c',1)}
+function bollard(x,y){box(x,y,.12,.12,0,24,['#d6c695','#baad7f','#a29b72']);}
+function fence(x,y,w){for(const z of [9,20])box(x,y,w,.06,z,3,['#d0bd92','#b4a681','#9d9d78']);for(let i=0;i<=w;i++)bollard(x+i,y);bollard(x+w,y)}
+const player={x:5.1,y:6.8,face:'front',step:0,moving:false};
+function character(x,y,npc=false){const p=P(x,y);shadow(x,y,21,8);c.save();c.translate(...p);
+ const bob=!npc&&player.moving?Math.sin(player.step*2)*1.2:0;
+ if(!npc){ellipse(0,0,18,7,'#77af9c22');c.beginPath();c.ellipse(0,0,18,7,0,0,Math.PI*2);c.strokeStyle='#76a99a';c.lineWidth=1.5;c.stroke();}
+ c.translate(0,-2+bob);const stride=!npc&&player.moving?Math.sin(player.step)*4:0;const back=!npc&&player.face==='back';
+ round(-10,-21,8,20+stride,3,'#657c72','#49635c');round(3,-21,8,20-stride,3,'#7e9182','#49635c');round(-12,-4+stride,11,6,2,'#675f4d','#536050');round(3,-4-stride,12,6,2,'#675f4d','#536050');line([[-10,-2+stride],[-3,-2+stride]],'#a49b7a',1);
+ const coat=c.createLinearGradient(-13,-40,12,-16);coat.addColorStop(0,npc?'#829b75':'#b6bd8a');coat.addColorStop(1,npc?'#5d836b':'#8c9d70');
+ path([[-9,-43],[7,-43],[12,-36],[13,-18],[8,-15],[-11,-16],[-13,-35]],coat,'#596f58',1.3);
+ const arm=!npc&&player.moving?stride*.8:0;round(-17,-38+arm,7,20,3,npc?'#87a17b':'#acb781','#64795b');ellipse(-13.5,-17+arm,3.4,4,'#e6be93','#9a9571');round(11,-37-arm,7,19,3,npc?'#739577':'#a0ad78','#64795b');ellipse(14.5,-18-arm,3.5,4,'#edc59b','#9a9571');
+ if(back){round(-8,-39,17,21,4,'#8a9671','#5b725d');round(-6,-36,13,7,2,'#b3bd8e','#728563');round(-5,-26,11,7,2,'#788a66','#60765b');line([[-10,-40],[-11,-19]],'#d0cca3',2)}else{path([[-8,-42],[0,-35],[6,-42],[1,-31]],'#d5d4ac','#78896a');line([[1,-31],[1,-18]],'#758968',1);round(5,-28,5,5,1,'#c6c798');ellipse(2,-23,1,1,'#d9c78b')}
+ round(-4,-47,9,8,2,'#dfb68b','#9a9775');ellipse(0,-58,14,16,'#efd0a4','#817f60');ellipse(-13,-56,3,5,'#e7bc91');ellipse(13,-56,3,5,'#e7bc91');
+ // Scalloped hair silhouette and small ink strokes give the character an illustrated finish.
+ path([[-14,-57],[-16,-66],[-12,-74],[-7,-76],[-3,-80],[1,-77],[8,-78],[15,-70],[15,-59],[10,-62],[8,-67],[2,-64],[-5,-66],[-10,-61]],'#74634a','#5b624e',1.4);
+ line([[-10,-70],[-6,-73],[-2,-73]],'#a58c62',2);line([[1,-72],[6,-72],[9,-69]],'#a58c62',1.5);
+ if(back){ellipse(0,-60,13,12,'#74634a');line([[-8,-57],[-6,-52]],'#927b56',1);line([[7,-59],[8,-54]],'#927b56',1)}else{ellipse(-5,-56,1.2,1.8,'#485b4c');ellipse(6,-56,1.2,1.8,'#485b4c');ellipse(-8,-51,3,1.5,'#dba88b66');ellipse(9,-51,3,1.5,'#dba88b66');line([[-2,-48],[1,-47],[4,-49]],'#a38164',1)}
+ if(npc){round(-14,-74,28,9,3,'#799773','#526f58');path([[-10,-74],[-7,-80],[8,-80],[12,-74]],'#97ab7d','#526f58');ellipse(0,-75,2,2,'#e0c78b');path([[-14,-67],[8,-67],[14,-64],[-11,-63]],'#5b7b61','#526f58');round(5,-33,10,14,1,'#51756a','#496558');round(6,-32,7,11,1,'#e1dfbc');}
+ c.restore();
+}
+const blocks=[{x:1.65,y:1.32,w:2.95,d:.38},{x:6.8,y:1.65,w:2.45,d:.95},{x:7,y:3,w:1.95,d:.55},{x:1.05,y:4.5,w:.8,d:.8},{x:8.8,y:5.6,w:.85,d:.85},{x:5.2,y:2.3,w:.55,d:.55}];
+function canWalk(x,y){const r=.21;return x>=.65&&x<=9.4&&y>=.7&&y<=7.55&&!blocks.some(b=>x>b.x-r&&x<b.x+b.w+r&&y>b.y-r&&y<b.y+b.d+r)&&Math.hypot(x-.6,y-.7)>.45&&Math.hypot(x-9.35,y-.65)>.45}
+function segmentClear(a,b){const n=Math.ceil(Math.hypot(a.x-b.x,a.y-b.y)/.08);for(let i=1;i<=n;i++)if(!canWalk(a.x+(b.x-a.x)*i/n,a.y+(b.y-a.y)*i/n))return false;return true}
+function route(start,end){if(!canWalk(end.x,end.y))return [];if(segmentClear(start,end))return [end];const step=.2,key=(x,y)=>x+','+y;const sx=Math.round(start.x/step),sy=Math.round(start.y/step),tx=Math.round(end.x/step),ty=Math.round(end.y/step);const open=[{x:sx,y:sy,g:0,f:0}],cost=new Map([[key(sx,sy),0]]),prev=new Map();let found;
+ for(let n=0;open.length&&n<4000;n++){open.sort((a,b)=>a.f-b.f);const a=open.shift(),ak=key(a.x,a.y);if(a.g>cost.get(ak))continue;if(a.x===tx&&a.y===ty){found=a;break}for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){const x=a.x+dx,y=a.y+dy;if(!canWalk(x*step,y*step)||!segmentClear({x:a.x*step,y:a.y*step},{x:x*step,y:y*step}))continue;const k=key(x,y),g=a.g+Math.hypot(dx,dy);if(g>=(cost.get(k)??Infinity))continue;cost.set(k,g);prev.set(k,a);open.push({x,y,g,f:g+Math.hypot(tx-x,ty-y)})}}
+ if(!found)return [];const points=[end];let a=found;while(a.x!==sx||a.y!==sy){points.unshift({x:a.x*step,y:a.y*step});a=prev.get(key(a.x,a.y));if(!a)return []}points.unshift({x:sx*step,y:sy*step});const result=[];let anchor=start;while(points.length){let n=points.length-1;while(n>=0&&!segmentClear(anchor,points[n]))n--;if(n<0)return [];anchor=points[n];result.push(anchor);points.splice(0,n+1)}return result;
+}
+const scenery=[
+ {x:.6,y:.7,f:()=>tree(.6,.7,.93)},
+ {x:1.7,y:1.5,f:()=>board(1.7,1.5),offset:1.3},
+ {x:6.8,y:1.65,f:()=>table(6.8,1.65),offset:1.6},
+ {x:7,y:3,f:()=>bench(7,3),offset:1.2},
+ {x:9.35,y:.65,f:()=>tree(9.35,.65,1.06)},
+ {x:1.15,y:4.55,f:()=>planter(1.15,4.55,.65)},
+ {x:9,y:5.7,f:()=>planter(9,5.7,.65)},
+ {x:.6,y:6.5,f:()=>bush(.6,6.5,1.1)},
+ {x:8.8,y:7.3,f:()=>bush(8.8,7.3,1.2)},
+ {x:1,y:7.75,f:()=>fence(1,7.75,2.2),offset:1},
+ {x:7.4,y:7.75,f:()=>fence(7.4,7.75,2),offset:1},
+ {x:5.45,y:2.55,f:()=>character(5.45,2.55,true)},
+];
+// Cache every independent illustration once; the walking character remains live.
+const base=document.createElement('canvas');base.width=SW;base.height=SH;const baseCtx=base.getContext('2d');ground();wall();baseCtx.drawImage(canvas,0,0);
+const sprites=scenery.map((o,i)=>{c.clearRect(0,0,SW,SH);rng=500+i*135;o.f();const a=document.createElement('canvas');a.width=SW;a.height=SH;a.getContext('2d').drawImage(canvas,0,0);return {...o,image:a,depth:o.x+o.y+(o.offset||0)}});
+let destination=null,waypoints=[],lastTime=0;const keys=new Set();let near=false;
+function draw(){c.clearRect(0,0,SW,SH);c.drawImage(base,0,0);if(destination){const p=P(destination.x,destination.y);c.setLineDash([3,4]);c.strokeStyle='#79a18e';c.lineWidth=1.5;c.beginPath();c.ellipse(...p,12,6,0,0,Math.PI*2);c.stroke();c.setLineDash([])}const items=[...sprites,{depth:player.x+player.y,player:true}].sort((a,b)=>a.depth-b.depth);for(const o of items)o.player?character(player.x,player.y):c.drawImage(o.image,0,0);}
+function update(dt){let vx=0,vy=0;const right=keys.has('ArrowRight')||keys.has('d'),left=keys.has('ArrowLeft')||keys.has('a'),up=keys.has('ArrowUp')||keys.has('w'),down=keys.has('ArrowDown')||keys.has('s');const h=Number(right)-Number(left),v=Number(down)-Number(up);if(h||v){vx=h+v;vy=-h+v;waypoints=[];destination=null}else if(waypoints.length){const target=waypoints[0];vx=target.x-player.x;vy=target.y-player.y;const distance=Math.hypot(vx,vy);if(distance<.045){player.x=target.x;player.y=target.y;waypoints.shift();vx=vy=0;}}
+ const len=Math.hypot(vx,vy);player.moving=false;if(len>.001){const amount=Math.min(2.2*dt,waypoints.length?len:Infinity),dx=vx/len*amount,dy=vy/len*amount;const oldx=player.x,oldy=player.y;if(canWalk(player.x+dx,player.y))player.x+=dx;if(canWalk(player.x,player.y+dy))player.y+=dy;player.moving=Math.hypot(player.x-oldx,player.y-oldy)>.001;if(player.moving){player.step+=dt*10;player.face=vx+vy<-.05?'back':'front'}}if(!waypoints.length)destination=null;
+ const close=player.x>1.3&&player.x<4.9&&player.y>1.6&&player.y<3.4;if(close!==near){near=close;document.getElementById('note').hidden=!close;document.getElementById('status').textContent=close?'已抵達安全規定告示牌。':'探索這一小片庭院。';}}
+function frame(time){const dt=Math.min((time-lastTime)/1000,.04);lastTime=time;update(dt);draw();requestAnimationFrame(frame)}
+function clearInput(){keys.clear();player.moving=false}
+window.addEventListener('keydown',e=>{if(e.target.tagName==='BUTTON')return;const k=e.key.length===1?e.key.toLowerCase():e.key;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d'].includes(k)){e.preventDefault();keys.add(k)}});window.addEventListener('keyup',e=>keys.delete(e.key.length===1?e.key.toLowerCase():e.key));window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInput()});
+canvas.addEventListener('pointerdown',e=>{canvas.focus();const r=canvas.getBoundingClientRect();const end=unproject((e.clientX-r.left)*SW/r.width,(e.clientY-r.top)*SH/r.height);const path=route(player,end);if(path.length){waypoints=path;destination=end;document.getElementById('status').textContent='前往指定位置…'}else{document.getElementById('status').textContent='請點選庭院中可行走的地面。'}});
+document.querySelectorAll('[data-key]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys.add(b.dataset.key)});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>keys.delete(b.dataset.key))});
+document.getElementById('reset').addEventListener('click',()=>{Object.assign(player,{x:5.1,y:6.8,face:'front',step:0,moving:false});waypoints=[];destination=null;clearInput();update(0);canvas.focus();document.getElementById('status').textContent='已回到入口。'});
+draw();requestAnimationFrame(frame);
+</script></body></html>

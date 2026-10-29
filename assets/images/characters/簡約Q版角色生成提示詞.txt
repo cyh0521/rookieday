@@ -1,0 +1,37 @@
+工具：內建 image_gen；附圖為畫風參考。主角運動服為無特定校名的白色／深藍高中運動服設計。
+front
+Use the attached image ONLY as art-style reference. Match its SIMPLE CUTE TAIWANESE/JAPANESE CHIBI cartoon: solid dark oval bean eyes, tiny smiling mouth, large rounded head, warm subtle blush, restrained flat cel shading, soft thick charcoal outlines, simple dark-brown hair shapes. No elaborate sparkling anime eyes, no glossy hair strands, no realistic rendering. 2.5-head-tall proportions. True transparent background, no scenery, no ground or shadow, no text. Whole figure including hair and shoes with generous transparent margins.
+A cute teenage MALE HIGH SCHOOL STUDENT with short dark brown hair, no hat, no backpack, wearing a Taiwanese high school PE TRACKSUIT: white zip-up sports jacket with navy-blue shoulder/sleeve panels and small teal trim, navy long track pants with one white stripe along each outside leg, white running shoes with navy accents. No school name or logo. Same boy and clothes in every frame.
+ONE HORIZONTAL ROW, exactly FIVE equally spaced full-body sprites in five cells. STRICT STRAIGHT FRONT VIEW, square shoulders and two symmetrical oval eyes, facing directly at viewer. Do not use diagonal angles. Constant scale, same head-top height and head centre inside every cell. Clear empty space between all figures.
+Pose1 standing still, BOTH FEET FLAT ON SAME GROUND LEVEL, relaxed arms.
+Pose2 walking with LEFT leg extended forward, RIGHT arm forward.
+Pose3 passing pose, left knee lifted, right foot grounded.
+Pose4 walking RIGHT leg extended forward, LEFT arm forward, visibly opposite to pose2.
+Pose5 passing pose, right knee lifted, left foot grounded.
+Never crop any head or shoes. No overlap between figures. Full-body game-ready sprite strip, 5 columns and 1 row.
+
+side
+Use the attached image ONLY as art-style reference. Match its SIMPLE CUTE TAIWANESE/JAPANESE CHIBI cartoon: solid dark oval bean eyes, tiny smiling mouth, large rounded head, warm subtle blush, restrained flat cel shading, soft thick charcoal outlines, simple dark-brown hair shapes. No elaborate sparkling anime eyes, no glossy hair strands, no realistic rendering. 2.5-head-tall proportions. True transparent background, no scenery, no ground or shadow, no text. Whole figure including hair and shoes with generous transparent margins.
+A cute teenage MALE HIGH SCHOOL STUDENT with short dark brown hair, no hat, no backpack, wearing a Taiwanese high school PE TRACKSUIT: white zip-up sports jacket with navy-blue shoulder/sleeve panels and small teal trim, navy long track pants with one white stripe along each outside leg, white running shoes with navy accents. No school name or logo. Same boy and clothes in every frame.
+ONE HORIZONTAL ROW, exactly FIVE equally spaced full-body sprites in five cells. STRICT SIDE VIEW facing RIGHT. Do not use diagonal angles. Constant scale, same head-top height and head centre inside every cell. Clear empty space between all figures.
+Pose1 standing still, BOTH FEET FLAT ON SAME GROUND LEVEL, relaxed arms.
+Pose2 walking with LEFT leg extended forward, RIGHT arm forward.
+Pose3 passing pose, left knee lifted, right foot grounded.
+Pose4 walking RIGHT leg extended forward, LEFT arm forward, visibly opposite to pose2.
+Pose5 passing pose, right knee lifted, left foot grounded.
+Never crop any head or shoes. No overlap between figures. Full-body game-ready sprite strip, 5 columns and 1 row.
+
+back
+Use the attached image ONLY as art-style reference. Match its SIMPLE CUTE TAIWANESE/JAPANESE CHIBI cartoon: solid dark oval bean eyes, tiny smiling mouth, large rounded head, warm subtle blush, restrained flat cel shading, soft thick charcoal outlines, simple dark-brown hair shapes. No elaborate sparkling anime eyes, no glossy hair strands, no realistic rendering. 2.5-head-tall proportions. True transparent background, no scenery, no ground or shadow, no text. Whole figure including hair and shoes with generous transparent margins.
+A cute teenage MALE HIGH SCHOOL STUDENT with short dark brown hair, no hat, no backpack, wearing a Taiwanese high school PE TRACKSUIT: white zip-up sports jacket with navy-blue shoulder/sleeve panels and small teal trim, navy long track pants with one white stripe along each outside leg, white running shoes with navy accents. No school name or logo. Same boy and clothes in every frame.
+ONE HORIZONTAL ROW, exactly FIVE equally spaced full-body sprites in five cells. STRICT STRAIGHT BACK VIEW, symmetrical shoulders, NO visible face or cheek. Do not use diagonal angles. Constant scale, same head-top height and head centre inside every cell. Clear empty space between all figures.
+Pose1 standing still, BOTH FEET FLAT ON SAME GROUND LEVEL, relaxed arms.
+Pose2 walking with LEFT leg extended forward, RIGHT arm forward.
+Pose3 passing pose, left knee lifted, right foot grounded.
+Pose4 walking RIGHT leg extended forward, LEFT arm forward, visibly opposite to pose2.
+Pose5 passing pose, right knee lifted, left foot grounded.
+Never crop any head or shoes. No overlap between figures. Full-body game-ready sprite strip, 5 columns and 1 row.
+
+npc
+Use the attached image ONLY as art-style reference. Match its SIMPLE CUTE TAIWANESE/JAPANESE CHIBI cartoon: solid dark oval bean eyes, tiny smiling mouth, large rounded head, warm subtle blush, restrained flat cel shading, soft thick charcoal outlines, simple dark-brown hair shapes. No elaborate sparkling anime eyes, no glossy hair strands, no realistic rendering. 2.5-head-tall proportions. True transparent background, no scenery, no ground or shadow, no text. Whole figure including hair and shoes with generous transparent margins.
+ONE FULL BODY character, not a sprite sheet: a friendly adult FEMALE Taiwan ROC Army instructor, three-quarter front view, standing with both boots flat, black/dark-brown hair in low ponytail and wearing an olive military field cap. Authentic Taiwan ROC Army GREEN DIGITAL WOODLAND CAMOUFLAGE field jacket and matching trousers: small rectangular pixel-like olive, forest-green, dark-brown and tan patches; tactical green belt; black combat boots. Small Taiwan flag patch on upper sleeve, no invented foreign insignia, no weapons. Holding a dark green clipboard with both hands at waist. Feminine face and ponytail, clearly adult but cute in same chibi style as reference. No exclamation mark or labels in this PNG; game draws those separately. Full body, transparent background, centered, generous space around hair and boots.

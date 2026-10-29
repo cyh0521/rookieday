@@ -1,0 +1,1 @@
+(()=>{let zoom=1;const img=document.querySelector('img');const draw=()=>img.style.setProperty('--scene-width',Math.max(innerWidth,1200)*zoom+'px');addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();zoom=Math.max(.5,Math.min(3,zoom*Math.exp(-e.deltaY*.002)));draw()},{passive:false});addEventListener('resize',draw);draw()})();

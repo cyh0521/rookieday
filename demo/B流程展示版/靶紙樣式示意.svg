@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">虛擬靶場編號同心圓紙靶示意</title>
+  <desc id="desc">左側為白色長方形紙靶，頂部標有編號 01，中央是深色同心圓；右側以繁體中文說明設計用途和回顧畫面。</desc>
+  <defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#1c3027" flood-opacity=".17"/></filter>
+    <style>
+      text{font-family:'Microsoft JhengHei','Noto Sans TC',sans-serif;fill:#253a30} .eyebrow{font-size:16px;font-weight:700;letter-spacing:4px;fill:#557464}.title{font-size:42px;font-weight:800}.label{font-size:24px;font-weight:700}.body{font-size:21px;fill:#59695e}.small{font-size:17px;fill:#77867b}.number{font-size:34px;font-weight:800;letter-spacing:5px}.ring{fill:none;stroke:#22362d}.line{stroke:#9fb1a5;stroke-width:2;fill:none}
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="#f2f3ed"/>
+  <text x="74" y="80" class="eyebrow">B 模組 / 靶紙視覺規格</text>
+  <text x="74" y="145" class="title">編號同心圓練習紙靶</text>
+  <text x="75" y="185" class="body">原創遊戲介面樣式 · 固定紙靶</text>
+  <rect x="120" y="245" width="420" height="570" rx="4" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="139" y="264" width="382" height="532" fill="none" stroke="#d1d9d0" stroke-width="2"/>
+  <rect x="260" y="278" width="140" height="55" rx="8" fill="#304d3d"/>
+  <text x="330" y="316" class="number" fill="#ffffff" text-anchor="middle" style="fill:#ffffff">01</text>
+  <circle cx="330" cy="540" r="187" fill="#f7f7f2" stroke="#253a30" stroke-width="5"/>
+  <circle cx="330" cy="540" r="157" class="ring" stroke-width="3"/>
+  <circle cx="330" cy="540" r="125" class="ring" stroke-width="3"/>
+  <circle cx="330" cy="540" r="94" class="ring" stroke-width="3"/>
+  <circle cx="330" cy="540" r="63" class="ring" stroke-width="3"/>
+  <circle cx="330" cy="540" r="32" fill="#263c30"/>
+  <circle cx="330" cy="540" r="5" fill="#f7f7f2"/>
+  <text x="330" y="772" text-anchor="middle" class="small">靶位 01 · 版面示意</text>
+  <path d="M539 307 H628" class="line"/><circle cx="538" cy="307" r="5" fill="#809989"/>
+  <text x="655" y="297" class="label">靶位編號</text>
+  <text x="655" y="331" class="body">與場景中的指定靶道一致</text>
+  <path d="M520 514 H628" class="line"/><circle cx="519" cy="514" r="5" fill="#809989"/>
+  <text x="655" y="505" class="label">高對比圓環</text>
+  <text x="655" y="540" class="body">讓遠處目標與回顧落點清楚可辨</text>
+  <path d="M539 746 H628" class="line"/><circle cx="538" cy="746" r="5" fill="#809989"/>
+  <text x="655" y="735" class="label">同一張靶紙</text>
+  <text x="655" y="770" class="body">練習畫面與回顧頁共用版型</text>
+  <text x="74" y="864" class="small">註：同心圓為本遊戲的視覺設計選擇；不表示課本指定靶型或實際射擊評分標準。</text>
+</svg>

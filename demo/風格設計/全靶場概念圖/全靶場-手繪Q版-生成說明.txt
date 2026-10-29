@@ -1,0 +1,22 @@
+用途：依既有完整導覽版區域配置製作的靜態畫風示意圖。
+配置依據：game/visit/world.js、game/visit/core.js；非施工或現場安全作業圖。
+工具：內建 image_gen。
+提示詞：
+Create a polished FULL TRAINING RANGE overview illustration, a static game-world concept image, in landscape 4:3 format. It must cover the ENTIRE range, not a closeup.
+REFERENCE ROLES:
+Image1 = ART STYLE and small safety-courtyard details: hand-drawn 2.5D isometric cartoon, warm sandstone paving, outlined low moss-grey stone walls, honey timber, rich leafy green trees, soft daylight, restrained cel shading.
+Image2 = REQUIRED SPATIAL LAYOUT ONLY: top-down plan of the previous complete game version. Transform this exact front-to-rear and left-to-right organization into isometric perspective, do not replace with an unrelated camp.
+Image3 = CHARACTER STYLE: cute approximately TWO HEADS TALL male high-school student in white/navy tracksuit with teal trim, simple bean eyes.
+Image4 = CHARACTER STYLE: female Taiwan ROC army digital camouflage instructor, cap and low ponytail, simple bean eyes.
+
+CAMERA: elevated isometric bird's-eye view looking from entrance/front toward target/back. Show all edges of the entire compact rectangular grounds and every functional zone. Avoid buildings blocking the map. Every facility is OPEN-AIR with NO roofs/canopies, exactly like the complete original tour. Entire map fills most canvas, a little calm pale green paper background, no giant margins. Both ground axes recede diagonally, coherent 2:1 isometric view. Painterly game-map finishing but clear clean outlines, detailed leaves and grass, crisp readable signage, pleasing warm green palette, not pixel art, not photorealistic or 3D render.
+
+LAYOUT INVARIANTS (front means near viewer/entrance, back means toward targets):
+LEFT / CENTRAL MAIN RANGE: At far back a solid earth backstop and tree belt, with EXACTLY FIVE upright numbered paper target stands in one row. In front of them a LONG EMPTY SANDY DOWNRANGE rectangle bounded by low side walls. At its near end EXACTLY FIVE blue-green prone mats in one firing row, with a clear firing line. Immediately BEHIND the firing row toward entrance is the reserve strip with 2 rows of five chairs. Behind that toward entrance is the waiting/equipment strip with 2 rows of six chairs. Then the front visitor courtyard with an actual range-map noticeboard near its centre. Front-centre entrance gateway leads onto that courtyard. Keep central downrange empty of visitors; students only in waiting, visitor and safety areas.
+RIGHT HAND SIDE: A continuous open side pedestrian corridor, separated from the main range, connects from front to back: front-right safety briefing courtyard with green safety noticeboard, equipment-check table, SIX benches (2 rows × 3 benches) and a female camouflage instructor teaching students; behind it along the side corridor a first-aid table and stretcher with a cream ambulance marked red cross parked at outer right edge; farther back an open controlled equipment/ammunition storage table with closed green cases; farthest back toward the firing line, an open command desk with monitor and radio. Do not place safety area behind targets. Command desk must be nearest the firing line, safety area nearest entrance.
+PERIMETER: modest stone retaining walls only by shooting range, small wooden fences, rounded broadleaf trees plus a few pine trees, low shrubs, flower planters, tidy paths and a few simple lamps. No extra barracks, no unrelated houses or stalls.
+
+People: about 10 small two-head-tall high-school students in consistent white/navy PE tracksuits; 3–4 female Taiwan digital camouflage staff. Small but visibly cute, consistent with references. No speech bubbles or dialogue UI, no health bars, no glowing selection rings.
+
+TEXT: exact TRADITIONAL CHINESE, placed on clean cream sign plaques with deep green lettering, logical visually linked labels. Use readable short labels: "目標區" at targets; "射擊線" at five mats; "清（驗）槍線" by the near-edge line; "預備線" at first chair strip; "待命線・著裝區" at second chair strip; "配置看板" beside visitor map board; "安全規定區" in front-right courtyard; "急救站" beside ambulance; "預備槍・彈藥管制區" at controlled storage; "指揮臺" at far-right command desk; "入口" at front gateway. Keep labels separated and unobscured, use clear sign panels rather than excessive floating UI. Top-left modest title "靶場見習日｜全區示意".
+Preserve original zone relationships; do not use a shopping village layout. This is a charming readable full campus training range concept illustration intended to guide future 2.5D game development.

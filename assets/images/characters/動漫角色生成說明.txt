@@ -1,0 +1,5 @@
+工具：內建 image_gen，透明背景角色表；以程式分割為獨立 PNG 後接入 2.5D 場景。
+原始檔：anime-source-sheet.png。
+風格提示：Japanese anime chibi RPG character sprite sheet, delicate cel shading, large amber eyes, tiny smiling mouth, rosy cheeks, layered fluffy chestnut hair, olive field uniform, no weapons. Four rows and three columns: front three-quarter idle/two walking poses, side idle/two walking poses, back idle/two walking poses, cap-wearing clipboard instructor in front/side/back views. Transparent background, no labels or scenery.
+人物顯示高度：學員 85px、教官 88px；影格的實體解析度與裁切資訊見 assets.js。
+目前動作為三影格示意，八方向共用三種視角與鏡像。

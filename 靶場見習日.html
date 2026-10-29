@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>靶場見習日｜完整手繪遊戲場景</title>
+<link rel="stylesheet" href="assets/style.css"></head><body><main>
+<figure><nav class="scene-controls" aria-label="場景視角"><button type="button" id="view-overview" aria-pressed="false">全景</button><button type="button" id="view-follow" aria-pressed="true">跟隨人物</button><span class="control-divider"></span><button type="button" id="zoom-out" aria-label="縮小">−</button><output id="zoomValue" aria-live="off">100%</output><button type="button" id="zoom-in" aria-label="放大">＋</button><button type="button" id="zoom-reset">重設</button></nav><canvas id="scene" width="1100" height="740" tabindex="0" aria-label="可移動的完整靶場等角場景。使用方向鍵或 WASD 移動，也可點選地面前往。"></canvas><section id="npcDialogue" class="npc-dialogue" role="dialog" aria-modal="true" aria-labelledby="dialogueSpeaker" aria-describedby="dialogueText" hidden>
+<div class="dialogue-portrait" aria-hidden="true"><img src="assets/images/characters/npc-dialogue-portrait.png" alt=""></div>
+<div class="dialogue-copy"><div id="dialogueSpeaker">靶場教官</div><p id="dialogueText">這裡有一張自願留營表，你要簽一下嗎？</p></div>
+<button id="dialogueContinue" class="dialogue-next" aria-label="結束對話，返回場景">▶</button>
+</section></figure>
+<span id="status" class="sr-only" role="status" aria-live="polite"></span></main>
+<script src="assets/assets.js"></script>
+<script src="assets/range-assets.js"></script>
+<script src="assets/range-world.js"></script>
+<script src="assets/range-game.js"></script></body></html>
+

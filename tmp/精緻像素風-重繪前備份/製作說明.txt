@@ -1,0 +1,2 @@
+獨立原創像素地磚、石牆、樹木、家具與人物，以 550×370 像素座標繪製，最近鄰放大至 1100×740。人物依八個移動方向選取正面、側面、背面及鏡像姿態，每方向三個影格。HTML 內嵌全部素材，不依賴此資料夾。
+重建：node tmp/build-refined-pixel.cjs，再執行 node tmp/package-refined-pixel.cjs。

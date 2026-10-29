@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#e9eddf"><title>靶場見習日 · 配置導覽展示版</title><script type="importmap">{"imports":{"three":"../../共用原始碼/viewer/vendor/build/three.module.js"}}</script><style>:root{--ink:#284a43;--muted:#75867b;--cream:#fffdf3;--line:#dce2d2;--green:#416f5a;--orange:#d28b51;--sidebar:286px}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dce7da;color:var(--ink);font-family:"Microsoft JhengHei","PingFang TC",sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit;touch-action:manipulation}button:focus-visible,a:focus-visible{outline:3px solid #d59857;outline-offset:4px}button:disabled{cursor:default}[hidden]{display:none!important}#stage{position:fixed;inset:0 0 0 var(--sidebar)}#stage canvas{display:block;width:100%;height:100%;touch-action:none}.scene-wash{position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,#eef1df55 0%,transparent 16%,transparent 83%,#f1efdc70 100%)}.topbar{position:fixed;z-index:4;top:27px;left:32px;right:28px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}.brand,.top-actions{pointer-events:auto}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}.brand-icon{font-size:41px;color:#bd8152;line-height:1}.brand small{display:block;font-size:9px;letter-spacing:2px;font-weight:700;margin-bottom:4px}.brand strong{font-size:23px;letter-spacing:3px}.top-actions{display:flex;align-items:center;gap:9px}.top-actions button{border:1px solid #fff7;background:#fffdf3e8;box-shadow:0 4px 15px #34513a0b;border-radius:99px;padding:10px 15px;font-size:12px;font-weight:700}.top-actions button span{margin-left:7px;color:var(--orange);font-size:11px}.demo-tag{font-size:11px;color:#5d7663;letter-spacing:1px;margin-right:9px}.journey{position:fixed;z-index:3;left:0;top:0;bottom:0;width:var(--sidebar);padding:128px 27px 20px 32px;background:linear-gradient(90deg,#fbfaf0 85%,#fbfaf0f5);border-right:1px solid #fff9;box-shadow:8px 0 40px #4a604806}.eyebrow{font-size:10px;letter-spacing:2px;color:#9a805b;font-weight:700}.journey h1{font-size:31px;letter-spacing:1.5px;line-height:1.5;margin:12px 0}.intro{font-size:12px;color:var(--muted);line-height:1.9;margin:0 0 23px}.progress-track{height:4px;background:#e6e8dc;border-radius:4px}.progress-track span{display:block;height:100%;width:0;background:#79a17d;border-radius:4px;transition:width .5s}.progress-copy{display:flex;justify-content:space-between;margin:9px 0 15px;font-size:10px;letter-spacing:1px;color:#829082}.progress-copy b{color:#47745e}ol{list-style:none;padding:0;margin:0}#steps li{margin:6px 0}#steps button{display:flex;gap:11px;align-items:center;width:100%;padding:14px 10px;border:1px solid transparent;background:transparent;text-align:left;border-radius:12px;transition:.2s}#steps button:hover,#steps button.current{background:#eef0df;border-color:#dce2cb}#steps button.done .step-number{background:#66896e;color:white}.step-number{border:1px solid #cdd6bf;color:#83937c;border-radius:50%;font-size:11px;width:29px;height:29px;display:grid;place-items:center;flex-shrink:0}#steps strong{font-size:12px;font-weight:700;display:block}#steps small{font-size:10px;display:block;color:#7d8c7b;margin-top:5px}#steps i{font-style:normal;margin-left:auto;font-size:14px;color:#91a184}.guide-tip{display:flex;gap:9px;margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}.guide-tip>span{color:var(--orange);font-size:18px}.guide-tip p{margin:0;font-size:11px;color:#6f8273;line-height:1.8}.text-button{border:0;background:transparent;padding:15px 0;font-size:10px;color:#93a08b}.reference{position:absolute;bottom:25px;color:#95a08e;font-size:9px;line-height:1.8}.scene-caption{position:fixed;bottom:72px;left:calc(var(--sidebar) + 27px);display:flex;gap:9px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.5px;color:#486a56}.caption-divider{color:#a9b6a0;padding:0 4px}.live-dot{width:6px;height:6px;border-radius:50%;background:#65966b;box-shadow:0 0 0 4px #a4bd8c33}.controls{position:fixed;bottom:26px;left:calc(var(--sidebar) + 27px);display:flex;gap:17px;font-size:10px;color:#657d65;align-items:center}kbd{font:inherit;display:inline-block;background:#fffdf3b5;border:1px solid #b9c8a58c;border-radius:4px;padding:3px 5px;box-shadow:0 1px 0 #9da99155;margin-right:4px}#labels{position:fixed;inset:0;pointer-events:none;z-index:2}.map-label{position:absolute;transform:translate(-50%,-100%);white-space:nowrap;border:1px solid #fff9;background:#fdfbefec;color:#46604e;border-radius:6px;padding:5px 9px;font-size:10px;letter-spacing:.5px;box-shadow:0 3px 8px #29412d12;pointer-events:auto;transition:background .15s}.map-label:after{content:"";position:absolute;bottom:-5px;left:calc(50% - 4px);width:7px;height:7px;background:inherit;transform:rotate(45deg)}.map-label.station{background:#386e5d;color:#fffce6;padding:7px 11px;font-weight:700;border-color:#b5c9b5;box-shadow:0 4px 10px #29412d22}.map-label.station:hover{background:#588668}.map-label.station b{display:inline-block;color:#f0d699;font-size:10px;margin-right:5px}.map-label.done{background:#7e9c74}.map-label.quiet{font-size:9px;opacity:.85;pointer-events:none}.interact{position:fixed;bottom:100px;left:calc(50% + 135px);transform:translateX(-50%);z-index:4;display:flex;align-items:center;gap:12px;background:#fffdf1;border:1px solid #b4c4a3;border-radius:12px;padding:12px 17px;box-shadow:0 7px 20px #29412d22;font-size:12px}.interact b{color:#b2844b}.interact kbd{background:#527b60;color:white;border:0}.loading,.error-panel{position:fixed;z-index:30;inset:0;background:#f7f5e9;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px}.loading-mark{font-size:64px;color:#8aab83;animation:spin 6s linear infinite}.loading h2,.error-panel h2{font-size:23px;font-weight:500}.loading p,.error-panel p{font-size:12px;color:#7e8a76}.loading{transition:opacity .5s}.loading.ready{opacity:0;pointer-events:none}.error-panel button,.primary{border:0;border-radius:8px;background:#416f5a;color:#fffbed;padding:13px 21px;font-weight:700;font-size:12px}.error-panel{z-index:40}#toast{position:fixed;z-index:30;top:95px;left:calc(50% + 130px);transform:translate(-50%,-15px);background:#315e50ed;color:#fff8e4;padding:12px 22px;border-radius:9px;box-shadow:0 6px 25px #23452c22;opacity:0;transition:.3s;pointer-events:none;font-size:12px;max-width:65vw;text-align:center}#toast.show{opacity:1;transform:translate(-50%,0)}dialog{border:0;color:var(--ink);padding:0;background:#fffdf2;box-shadow:0 25px 100px #132b3150;border-radius:22px}dialog::backdrop{background:#1d3e3959;backdrop-filter:blur(6px)}.event-dialog{width:min(960px,92vw);max-height:88vh;overflow:auto}.event-dialog[open]{display:grid;grid-template-columns:36% 64%}.dialog-close{position:absolute;z-index:3;top:16px;right:18px;border:0;border-radius:50%;width:32px;height:32px;background:#e9eddf;color:#65775d;font-size:22px;line-height:1}.event-art{background:#d0ddbe;position:relative;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}.art-kicker{position:absolute;top:28px;left:26px;font-size:9px;letter-spacing:1px;color:#67816a}.event-art svg{width:100%;margin-top:45px;margin-bottom:-5px}.portrait-name{background:#47705c;color:#fff8df;padding:18px 25px;font-size:18px;letter-spacing:3px}.portrait-name small{display:block;font-size:9px;letter-spacing:1px;margin-top:6px;color:#c0d4b1}.event-content{padding:48px 40px 30px;display:flex;flex-direction:column;min-height:460px}.event-content h2{font-size:25px;line-height:1.5;margin:12px 0 17px;letter-spacing:1px}.event-content p{font-size:13px;line-height:1.95;margin:0 0 15px;color:#617364}.event-content .lead{color:#355b49;font-size:15px;font-weight:700}.event-content .source{font-size:10px;color:#92a085}.choices{display:grid;gap:9px}.choices button{text-align:left;line-height:1.6;font-size:12px;padding:13px 15px;border:1px solid #d8e1cb;background:#f5f5e9;border-radius:9px}.choices button:hover{background:#edf1dc;border-color:#8ba080}.choices button.correct{border-color:#779b79;background:#e7efdc}.choices button.wrong{border-color:#d5ac8a;background:#f9ebdc}.event-content .feedback{min-height:24px;font-size:12px;color:#9c714c;margin-top:12px}.event-footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.event-footer .page-num{color:#99a18c;font-size:10px;letter-spacing:2px}.event-footer button{border:0;border-radius:8px;background:#416f5a;color:#fffbed;padding:12px 19px;font-weight:700;font-size:12px}.mini-plan{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.mini-plan span{padding:10px;background:#e9eedb;border-radius:6px;font-size:11px;text-align:center}.mini-plan span.wide{grid-column:1/-1;background:#d8e4c8}.notebook{width:min(540px,90vw);padding:38px;max-height:88vh;overflow:auto}.notebook h2{font-size:27px;letter-spacing:2px;margin:12px 0}.notebook>p{font-size:12px;color:#7e8d78;line-height:1.8}.note-card{padding:17px 0;border-bottom:1px solid #dce4cf;display:flex;gap:15px}.stamp{width:45px;height:45px;flex-shrink:0;border:1px dashed #aab99b;border-radius:50%;display:grid;place-items:center;font-size:20px;color:#abb5a1}.note-card.saved .stamp{color:#fff7db;background:#7a9c75;border:0}.note-card h3{font-size:13px;margin:0 0 7px}.note-card p{font-size:11px;line-height:1.8;color:#86927b;margin:0}.notebook .small-note{font-size:10px;margin:20px 0}.mobile-pad{display:none}@keyframes spin{to{transform:rotate(360deg)}}@media(min-height:950px){.journey{padding-top:160px}}@media(max-height:740px) and (min-width:761px){.journey{padding-top:105px}.journey h1{font-size:25px;margin:8px 0}.intro{margin-bottom:13px}.guide-tip{margin-top:8px;padding-top:10px}.reference{display:none}#steps button{padding:11px 8px}.topbar{top:20px}.text-button{padding:10px 0}}@media(max-width:1050px){:root{--sidebar:245px}.journey{padding-left:23px;padding-right:20px}.journey h1{font-size:27px}.topbar{left:23px}.brand strong{font-size:20px}.demo-tag{display:none}.top-actions{gap:5px}.top-actions button{padding:9px 11px}.controls{gap:8px;font-size:9px}.event-content{padding:42px 28px 25px}}@media(max-width:760px){:root{--sidebar:0px}.topbar{top:16px;left:17px;right:17px}.brand-icon{font-size:30px}.brand strong{font-size:17px;letter-spacing:1px}.brand small{font-size:7px;letter-spacing:1px}.top-actions button{padding:9px;font-size:10px}#soundButton,#overviewButton{display:none}.journey{top:auto;bottom:0;width:100%;height:156px;padding:13px 16px;background:#fffdf0f5;border-radius:19px 19px 0 0;box-shadow:0 -3px 25px #385b3b12}.journey>.eyebrow,.journey h1,.intro,.guide-tip,.reference,.progress-track,.text-button{display:none}.progress-copy{margin:0 3px 8px;font-size:10px}#steps{display:flex;gap:5px}#steps li{width:33.333%;margin:0}#steps button{padding:9px 4px;gap:5px;flex-direction:column;align-items:flex-start}#steps strong{font-size:10px}#steps small{font-size:8px}#steps i{display:none}.step-number{width:21px;height:21px;font-size:9px}#stage{bottom:120px}.scene-caption{left:18px;bottom:178px;font-size:9px}.controls{display:none}.interact{bottom:215px;left:50%;padding:10px 14px;font-size:11px}.mobile-pad{position:fixed;bottom:216px;left:17px;display:grid;grid-template-columns:repeat(3,32px);gap:3px;z-index:3}.mobile-pad button{height:32px;background:#fffc;border:1px solid #c6d4b6;border-radius:8px}.mobile-pad button:first-child{grid-column:2}.mobile-pad button:nth-child(2){grid-column:1}.event-dialog[open]{grid-template-columns:1fr}.event-art{display:none}.event-content{padding:40px 24px 25px;min-height:380px}.event-content h2{font-size:21px}.event-content p{font-size:12px}.map-label{font-size:8px;padding:4px 6px}.map-label.station{font-size:9px;padding:6px 8px}#toast{left:50%;top:75px;max-width:90vw;width:max-content;font-size:11px}.notebook{padding:30px 23px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+@media(max-width:760px){#overviewButton{display:inline-block}.top-actions button{padding:8px}.brand strong{font-size:16px}.top-actions{gap:4px}}
+</style></head>
+<body>
+<main id="stage" aria-label="3D 靶場，點擊地面移動，亦可使用方向鍵"></main><div class="scene-wash" aria-hidden="true"></div>
+<header class="topbar"><a class="brand" href="#" aria-label="回到全景"><span class="brand-icon">✳</span><span><small>FIELD NOTES · 01</small><strong>靶場見習日</strong></span></a><div class="top-actions"><span class="demo-tag">配置導覽展示版</span><button id="notebookButton">見習手冊 <span id="bookCount">0 / 3</span></button><button id="overviewButton" aria-label="切換全景與跟隨鏡頭">全景</button><button id="soundButton" aria-label="開啟音效" aria-pressed="false">音效 關</button></div></header>
+<aside class="journey"><div class="eyebrow">TODAY'S WALK</div><h1>第一次，<br>走進靶場。</h1><p class="intro">跟著教官認識場地，<br>收集你的第一份見習筆記。</p><div class="progress-track"><span id="progressBar"></span></div><div class="progress-copy"><span>今日見習</span><b id="progressText">0 / 3</b></div><ol id="steps"><li><button data-station="safety"><span class="step-number">01</span><span><strong>聽一段行前說明</strong><small>安全規定區</small></span><i>→</i></button></li><li><button data-station="map"><span class="step-number">02</span><span><strong>讀懂靶場地圖</strong><small>配置看板</small></span><i>→</i></button></li><li><button data-station="waiting"><span class="step-number">03</span><span><strong>找到集合位置</strong><small>待命線 · 著裝區</small></span><i>→</i></button></li></ol><div class="guide-tip"><span>✦</span><p id="guideTip">點選站點卡片，小隊員就會走過去。</p></div><button id="restartButton" class="text-button">重新開始這次見習 ↻</button><div class="reference">教材依據｜乙版下冊 p.190–191<br>區域關係依教材，景觀為遊戲化設計。</div></aside>
+<div id="labels" aria-label="場地標籤"></div><div class="scene-caption"><span class="live-dot"></span>靶場全景<span class="caption-divider">/</span><span id="locationText">入口步道</span></div><div class="controls"><span><kbd>W A S D</kbd> / 方向鍵 移動</span><span>點地面 行走</span><span><kbd>E</kbd> 互動</span><span>滾輪 縮放</span></div><button id="interactButton" class="interact" hidden><kbd>E</kbd><span>與教官交談</span><b>↗</b></button><div class="mobile-pad" aria-label="移動按鈕"><button data-key="ArrowUp" aria-label="向上">↑</button><button data-key="ArrowLeft" aria-label="向左">←</button><button data-key="ArrowDown" aria-label="向下">↓</button><button data-key="ArrowRight" aria-label="向右">→</button></div><div id="toast" role="status" aria-live="polite"></div>
+<section id="loading" class="loading"><div class="loading-mark">✳</div><h2>正在準備今天的見習</h2><p>整理場地、擺好座椅、等你出發。</p></section><section id="errorPanel" class="error-panel" hidden><h2>這個瀏覽器目前無法顯示 3D</h2><p id="errorText">請使用支援 WebGL 的 Chrome 或 Edge，並啟用圖形加速。</p><button onclick="location.reload()">重新載入</button></section>
+<dialog id="eventDialog" class="event-dialog" aria-labelledby="eventTitle"><button class="dialog-close" aria-label="關閉對話">×</button><div class="event-art"><div class="art-kicker">FIELD NOTES / 校外見習</div><svg viewBox="0 0 360 430" role="img" aria-label="微笑的場地教官插畫"><defs><linearGradient id="coat" x2="0" y2="1"><stop stop-color="#7a9a80"/><stop offset="1" stop-color="#456b5e"/></linearGradient></defs><circle cx="180" cy="202" r="134" fill="#dce5b9"/><path d="M16 353Q71 301 123 337T350 335V430H16Z" fill="#a7bd8d"/><g fill="#789b78"><path d="M27 277l28-68 28 68z"/><path d="M278 290l28-87 35 87z"/></g><path d="M62 430l13-112q3-38 56-49h96q54 11 60 49l12 112" fill="url(#coat)"/><path d="M142 256h74v47q-39 30-74-1z" fill="#dfab82"/><ellipse cx="111" cy="188" rx="14" ry="23" fill="#edbc94"/><ellipse cx="247" cy="188" rx="14" ry="23" fill="#edbc94"/><path d="M112 136q65-57 134 0v77q-5 60-68 67-63-10-66-67z" fill="#f3caa3"/><path d="M109 160q-12-78 68-81 91-3 74 84l-19-32q-45 27-105 9l-9 25z" fill="#4c4840"/><path d="M109 117q3-61 72-62 67 2 71 62z" fill="#587c66"/><path d="M100 112q75-16 161 0v22q-83 15-161 0z" fill="#6e9174"/><path d="M105 132q74 30 155 0l-12 16q-73 27-134 0z" fill="#36594c"/><rect x="170" y="88" width="22" height="19" rx="4" fill="#eed29b"/><path d="M148 184q8-8 17 0m35 0q8-8 17 0" stroke="#51473d" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="141" cy="210" rx="12" ry="6" fill="#e8a490"/><ellipse cx="221" cy="210" rx="12" ry="6" fill="#e8a490"/><path d="M168 224q13 13 26 0" stroke="#9c6b55" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M139 279l40 27-31 29-22-48m90-8l-37 27 31 29 23-49" fill="#9bb293"/><path d="M180 309v121" stroke="#365c50" stroke-width="3"/><rect x="210" y="338" width="42" height="32" rx="4" fill="#9bb293"/><rect x="103" y="337" width="42" height="33" rx="4" fill="#527561"/><rect x="105" y="340" width="37" height="10" rx="2" fill="#edcf8d"/><path d="M87 355l-13 62m199-62l10 62" stroke="#365c50" stroke-width="3"/></svg><div class="portrait-name">場地教官<small>陪你認識今天的見習環境</small></div></div><div class="event-content"><div id="eventKicker" class="eyebrow"></div><h2 id="eventTitle"></h2><div id="eventBody"></div><div id="eventChoices" class="choices"></div><p id="eventFeedback" class="feedback" aria-live="polite"></p><div id="eventFooter" class="event-footer"></div></div></dialog>
+<dialog id="notebook" class="notebook" aria-labelledby="notebookTitle"><button class="dialog-close" aria-label="關閉手冊">×</button><div class="eyebrow">MY FIELD NOTES</div><h2 id="notebookTitle">我的見習手冊</h2><p>把今天觀察到的事，留在這裡。</p><div id="notesList"></div><p class="small-note">本展示版的學習紀錄只保存在這個瀏覽器。</p><button id="returnButton" class="primary">回到場地 →</button></dialog>
+<script type="module">
+const STATIONS = {
+  safety:{name:'安全規定區',x:17,z:19,order:0},
+  map:{name:'配置看板',x:1,z:22.5,order:1},
+  waiting:{name:'待命線（著裝區）',x:-5,z:13.5,order:2},
+  medical:{name:'急救站',x:23,z:13.8},
+  command:{name:'指揮臺',x:18,z:-5.5},
+  control:{name:'預備槍管制區、彈藥管制區',x:17,z:2.5}
+};
+// Teaching-route collision bounds. The shooting and reserve areas are not walkable.
+const BLOCKS = [
+  [-1.5,3.5,19.5,21.2],[-9.8,-4.2,22.8,24.2],
+  [-16.8,-13.2,17.2,18.8],[-16.8,-13.2,21.2,22.8],[-16.8,-13.2,25.2,26.8],
+  [13.5,25.3,21.25,22.75],[13.5,25.3,24.25,25.75],
+  [18,22,16.7,18.7],[19.1,22.9,8.1,10],[20,22,11.3,12.6],
+  [17.6,22.4,-2.5,.9],[17.6,22.4,-9.1,-6.8],
+  [10.2,13.8,18.2,19.8],[10.2,13.8,26.2,27.8]
+];
+function canWalk(x,z) {
+  const courtyard=x>=-12&&x<=25&&z>=7.6&&z<=28;
+  const corridor=x>=13&&x<=25&&z>=-6&&z<=28;
+  const entry=x>=-1&&x<=5&&z>=28&&z<=32;
+  return (courtyard||corridor||entry)&&!BLOCKS.some(([a,b,c,d])=>x>a-.35&&x<b+.35&&z>c-.35&&z<d+.35);
+}
+function findPath(start,end) {
+  const step=.75,key=(x,z)=>`${x},${z}`,quant=v=>Math.round(v/step);
+  const sx=quant(start.x),sz=quant(start.z),tx=quant(end.x),tz=quant(end.z);
+  if(!canWalk(end.x,end.z))return [];
+  const open=[{x:sx,z:sz,g:0,f:0}],cost=new Map([[key(sx,sz),0]]),prev=new Map();
+  const dirs=[[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]];
+  let found=null;
+  for(let tries=0;open.length&&tries<7000;tries++){
+    open.sort((a,b)=>a.f-b.f);const n=open.shift(),nk=key(n.x,n.z);if(n.g>cost.get(nk))continue;
+    if(Math.hypot(n.x-tx,n.z-tz)<=1){found=n;break}
+    for(const [dx,dz] of dirs){const x=n.x+dx,z=n.z+dz;if(!canWalk(x*step,z*step))continue;if(dx&&dz&&(!canWalk(n.x*step,z*step)||!canWalk(x*step,n.z*step)))continue;const k=key(x,z),g=n.g+Math.hypot(dx,dz);if(g>=(cost.get(k)??Infinity))continue;cost.set(k,g);prev.set(k,n);open.push({x,z,g,f:g+Math.hypot(x-tx,z-tz)})}
+  }
+  if(!found)return [];
+  const path=[];let n=found;while(n.x!==sx||n.z!==sz){path.unshift({x:n.x*step,z:n.z*step});n=prev.get(key(n.x,n.z));if(!n)return []}path.push({x:end.x,z:end.z});return path;
+}
+function normaliseProgress(value){return Array.isArray(value)?[...new Set(value.filter(x=>['safety','map','waiting'].includes(x)))]:[]}
+const NOTES={
+  safety:{title:'先認識環境，再依指示行動',text:'安全規定區是聽取說明的地方。遇到不清楚的指示，先詢問現場工作人員。'},
+  map:{title:'一張地圖，幾種不同任務',text:'目標區在前方，後方依序可見射擊線、預備線與待命線；指揮、管制、急救等設施設在旁側。'},
+  waiting:{title:'待命線也是著裝區',text:'認識待命線與預備線的差異，集合、著裝與移動都依現場人員安排。'}
+};
+
+
+// A small, self-contained art kit. Every mesh is authored for this scene.
+function createWorld(scene) {
+  const root = new T.Group(); scene.add(root);
+  const palette = {grass:'#94b987',lightGrass:'#b0c997',deepGrass:'#6c9677',soil:'#bba887',sand:'#dbcdac',paving:'#e9dfc4',edge:'#e8e3cd',wood:'#b78b60',woodDark:'#846b51',green:'#628f73',dark:'#3b5c51',cream:'#fff5dc',orange:'#e2a26c',blue:'#83b9be',red:'#d48c79',skin:'#f1c49c',hair:'#4d4940',pants:'#56777c',shoe:'#394e4a',yellow:'#efc878'};
+  const mats = Object.fromEntries(Object.entries(palette).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:.87,flatShading:k!=='skin'})]));
+  const geometries = new Map();
+  const geo=(key,fn)=>{if(!geometries.has(key))geometries.set(key,fn());return geometries.get(key)};
+  function mesh(g,m,x,y,z,parent=root){const o=new T.Mesh(g,m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o}
+  function box(w,h,d,x,y,z,m,parent=root,r=.04){
+    r=Math.min(r,w/4,h/4,d/4);const key=`b${w},${h},${d},${r}`;
+    const g=geo(key,()=>{if(r<.009)return new T.BoxGeometry(w,h,d);const s=new T.Shape();const a=w/2-r,b=h/2-r;s.moveTo(-a,-b);s.lineTo(a,-b);s.lineTo(a,b);s.lineTo(-a,b);s.closePath();const g=new T.ExtrudeGeometry(s,{depth:d-r*2,bevelEnabled:true,bevelThickness:r,bevelSize:r,bevelSegments:1,steps:1,curveSegments:1});g.center();return g});
+    return mesh(g,m,x,y,z,parent);
+  }
+  function cyl(rt,rb,h,x,y,z,m,parent=root,n=10){return mesh(geo(`c${rt},${rb},${h},${n}`,()=>new T.CylinderGeometry(rt,rb,h,n)),m,x,y,z,parent)}
+  function ball(r,x,y,z,m,parent=root,detail=0){return mesh(geo(`i${r},${detail}`,()=>new T.IcosahedronGeometry(r,detail)),m,x,y,z,parent)}
+  function sphere(r,x,y,z,m,parent=root){return mesh(geo(`s${r}`,()=>new T.SphereGeometry(r,12,8)),m,x,y,z,parent)}
+  function group(x,y,z,rot=0){const g=new T.Group();g.position.set(x,y,z);g.rotation.y=rot;root.add(g);return g}
+  function line(x1,z1,x2,z2,m,width=.08,y=.19){const b=box(width,.018,Math.hypot(x2-x1,z2-z1),(x1+x2)/2,y,(z1+z2)/2,m,root,0);b.rotation.y=Math.atan2(x2-x1,z2-z1);return b}
+  let seed=9128;function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=128;const cx=canvas.getContext('2d');cx.fillStyle='#94b987';cx.fillRect(0,0,128,128);for(let i=0;i<1300;i++){cx.fillStyle=i%2?'#9bbd8c':'#8fb382';cx.fillRect(random()*128,random()*128,1+random()*2,1+random()*2)}
+  const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;texture.wrapS=texture.wrapT=T.RepeatWrapping;texture.repeat.set(12,14);const grassMat=new T.MeshStandardMaterial({map:texture,roughness:1});
+  const shadowCanvas=document.createElement('canvas');shadowCanvas.width=shadowCanvas.height=64;const sc=shadowCanvas.getContext('2d'),grad=sc.createRadialGradient(32,32,0,32,32,32);grad.addColorStop(0,'rgba(38,62,40,.23)');grad.addColorStop(.45,'rgba(38,62,40,.12)');grad.addColorStop(1,'rgba(38,62,40,0)');sc.fillStyle=grad;sc.fillRect(0,0,64,64);const contactMat=new T.MeshBasicMaterial({map:new T.CanvasTexture(shadowCanvas),transparent:true,depthWrite:false});
+  function contact(x,z,s,parent=root){const o=new T.Mesh(geo('shadow',()=>new T.PlaneGeometry(1,1)),contactMat);o.rotation.x=-Math.PI/2;o.position.set(x,.19,z);o.scale.set(s,s,1);parent.add(o)}
+  box(59,1.4,70,1,-.85,-1,mats.deepGrass,root,.7);box(58,.5,69,1,-.1,-1,grassMat,root,.24);
+  box(29,.17,33,-4,.1,-15,mats.sand,root,.12);box(31,.19,25,-3,.1,15,mats.paving,root,.15);box(12,.19,45,19.5,.1,5,mats.paving,root,.15);
+  // The textbook's front-to-rear relationships: targets, firing line, reserve, waiting.
+  box(29,.19,7,-4,.14,-5.5,mats.edge,root,.1);box(28,.11,7,-4,.16,3,mats.sand,root,.05);box(28,.11,8,-4,.16,11,mats.paving,root,.05);
+  for(let i=0;i<5;i++){const x=-15+i*5.5;box(3.2,.1,4.5,x,.26,-5.2,mats.blue,root,.07);box(1.1,.3,.7,x,.43,-7.1,mats.green,root,.13);for(let j=0;j<3;j++)box(.05,.015,4,x-1.25+j*1.25,.32,-5.2,mats.cream,root,0);}
+  line(-18,-8.5,10,-8.5,mats.orange,.15,.28);line(-18,-1.3,10,-1.3,mats.cream,.16,.28);
+  for(let x=-18;x<10;x+=1.5){box(.65,.02,.12,x,.25,6.6,mats.cream,root,0);box(.65,.02,.12,x,.25,15.4,mats.orange,root,0)}
+  // Substantial low walls, softly faceted earthen stop and trees beyond the target area.
+  for(const x of [-19,11]){box(.65,1.35,34,x,.8,-16,mats.soil,root,.12);box(.82,.18,34.2,x,1.56,-16,mats.edge,root,.08);for(let z=-31;z<0;z+=5.5)box(.92,1.65,.92,x,.9,z,mats.edge,root,.09)}
+  box(31,2.4,1, -4,1.3,-32.5,mats.soil,root,.15);box(31.5,.2,1.2,-4,2.6,-32.5,mats.edge,root,.1);
+  for(let i=0;i<8;i++){const b=ball(2.7,-17+i*3.8,1,-34,mats.deepGrass,root,0);b.scale.set(1.2,.8,.75)}
+  for(let i=0;i<5;i++){const x=-15+i*5.5;for(const dx of [-.6,.6])box(.12,2.3,.13,x+dx,1.3,-28,mats.woodDark);box(1.8,2.3,.16,x,2,-28,mats.cream,root,.045);const c=document.createElement('canvas');c.width=128;c.height=160;const g=c.getContext('2d');g.fillStyle='#fff7e4';g.fillRect(0,0,128,160);g.fillStyle='#446458';g.fillRect(40,6,48,24);g.fillStyle='#fff7e4';g.font='bold 18px sans-serif';g.textAlign='center';g.fillText(String(i+1).padStart(2,'0'),64,24);g.strokeStyle='#77836b';g.lineWidth=2;for(let r=35;r>=7;r-=7){g.beginPath();g.arc(64,93,r,0,Math.PI*2);g.stroke()}g.fillStyle='#5d725d';g.beginPath();g.arc(64,93,7,0,Math.PI*2);g.fill();const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;mesh(new T.PlaneGeometry(1.7,2.15),new T.MeshBasicMaterial({map:t}),x,2,-27.9);}
+  // Modular seating and open tables. There are no overhead canopies.
+  function chair(x,z,rot=0,tint=mats.green){const p=group(x,.2,z,rot);box(.68,.14,.7,0,.55,0,tint,p,.06);box(.68,.62,.12,0,.94,-.29,tint,p,.07);for(const a of [-.23,.23])for(const b of [-.23,.23])box(.065,.54,.065,a,.27,b,mats.woodDark,p,0);return p}
+  function bench(x,z,rot=0){const p=group(x,.2,z,rot);for(const a of [-.26,0,.26])box(3,.11,.23,0,.62,a,mats.wood,p,.025);for(const y of [.98,1.25])box(3,.2,.09,0,y,-.34,mats.wood,p);for(const a of [-1.14,1.14]){box(.16,.65,.6,a,.3,0,mats.dark,p);box(.12,1.2,.1,a,.65,-.31,mats.dark,p)}contact(x,z,3.2)}
+  function table(x,z,w=3){const p=group(x,.2,z);box(w,.17,1.25,0,1.1,0,mats.wood,p,.07);for(const a of [-w*.39,w*.39])for(const b of [-.43,.43])box(.1,1.1,.1,a,.55,b,mats.dark,p);contact(x,z,w);return p}
+  for(let row=0;row<2;row++)for(let col=0;col<5;col++)chair(-15+col*5.5,1.5+row*2.5,Math.PI);
+  for(let row=0;row<2;row++)for(let col=0;col<6;col++)chair(-14+col*3.6,9+row*2.7,Math.PI);
+  for(const x of [15.5,19.5,23.5])for(const z of [22,25])bench(x,z,Math.PI);
+  const podium=table(19.5,18,2.4);box(.7,.08,.5,0,1.23,.15,mats.cream,podium);box(.08,.7,.08,.65,1.55,0,mats.dark,podium);sphere(.12,.65,1.93,0,mats.dark,podium);
+  const command=table(20,-8,3.7);box(1.05,.7,.07,-.6,1.55,-.2,mats.dark,command);box(.9,.52,.08,-.6,1.58,-.15,mats.blue,command);box(.7,.08,.5,.7,1.25,.1,mats.cream,command);chair(20,-9.4);
+  table(20,-1.3,4);for(const x of [18.8,20.2,21.4]){box(.8,.65,.8,x,.55,-1.3,mats.deepGrass);box(.8,.65,.8,x,.55,.1,mats.deepGrass);box(.45,.05,.07,x,.72,.52,mats.cream)}
+  const firstAid=table(21,9,3.7);box(.9,.7,.55,-.9,1.5,0,mats.cream,firstAid,.08);box(.14,.45,.02,-.9,1.5,.29,mats.red,firstAid,0);box(.44,.14,.02,-.9,1.5,.30,mats.red,firstAid,0);box(1.5,.05,.9,21,.75,12,mats.blue);for(const x of [20.4,21.6])box(.09,.65,.09,x,.42,12,mats.dark);
+  // Wayfinding uses textures rather than font geometry, keeping the offline file small.
+  function sign(x,z,title,sub,color='#446d59',w=3.8){const p=group(x,.2,z);for(const a of [-w*.39,w*.39])box(.12,2.1,.14,a,1.05,0,mats.woodDark,p);box(w,1.25,.18,0,2.15,0,mats.cream,p,.08);const c=document.createElement('canvas');c.width=512;c.height=168;const g=c.getContext('2d');g.fillStyle='#fff7e2';g.fillRect(0,0,512,168);g.fillStyle=color;g.fillRect(0,0,10,168);g.textAlign='center';g.font='bold 41px Microsoft JhengHei, sans-serif';g.fillText(title,256,75);g.fillStyle='#8b957b';g.font='20px sans-serif';g.fillText(sub,256,121);const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;mesh(new T.PlaneGeometry(w-.12,1.12),new T.MeshBasicMaterial({map:t}),0,2.15,.101,p);return p}
+  sign(21,17,'安全規定區','LISTEN & LEARN',undefined,5);sign(-5,7,'待命線','著裝區 · WAITING');sign(20,-12,'指揮臺','CONTROL');sign(21,-4,'管制區','預備槍 · 彈藥');sign(23.3,7,'急救站','FIRST AID','#b17966',3.2);
+  // Field map board with actual miniature regions, near the beginning of the tour.
+  const mapBoard=group(1,.2,20.4);for(const x of [-1.8,1.8])box(.15,2.9,.18,x,1.4,0,mats.woodDark,mapBoard);box(4.4,2.5,.2,0,2,0,mats.wood,mapBoard,.1);box(4.05,2.15,.07,0,2,.15,mats.cream,mapBoard,.04);for(let i=0;i<4;i++)box(2.7,.27,.06,-.35,2.75-i*.44,.22,[mats.green,mats.blue,mats.orange,mats.sand][i],mapBoard);box(.55,1.65,.06,1.32,2.1,.22,mats.deepGrass,mapBoard);
+  // Chibi characters with eyes, hair, backpacks and articulated limbs.
+  const npcs=[];
+  function person(x,z,{shirt=mats.cream,cap=false,backpack=false,rotation=0,scale=1}={}){
+    const p=group(x,.22,z,rotation);p.scale.setScalar(scale);const body=new T.Group();p.add(body);
+    box(.68,.68,.44,0,1.05,0,shirt,body,.14);box(.64,.12,.44,0,.73,0,mats.pants,body,.03);sphere(.42,0,1.85,0,mats.skin,body);for(const a of [-1,1]){sphere(.105,a*.41,1.83,0,mats.skin,body);sphere(.035,a*.145,1.87,.391,mats.hair,body)}
+    const hair=sphere(.435,0,2,-.035,mats.hair,body);hair.scale.set(1,.58,1);if(cap){const h=sphere(.45,0,2.05,-.015,mats.green,body);h.scale.y=.6;box(.7,.09,.44,0,2.04,.26,mats.green,body,.045);box(.14,.12,.025,0,2.19,.405,mats.yellow,body,.015)}else{for(const a of [-.25,0,.25]){const h=sphere(.16,a,2,.28,mats.hair,body);h.scale.y=.62}}
+    box(.13,.035,.025,0,1.68,.38,mats.woodDark,body,.008);if(backpack){box(.6,.6,.24,0,1.08,-.32,mats.orange,body,.1);for(const a of [-.22,.22])box(.08,.57,.08,a,1.13,.24,mats.orange,body,.015)}
+    const arms=[],legs=[];for(const a of [-1,1]){const arm=new T.Group();arm.position.set(a*.44,1.26,0);body.add(arm);cyl(.105,.12,.43,0,-.17,0,shirt,arm,8);sphere(.115,0,-.42,0,mats.skin,arm);arms.push(arm);const leg=new T.Group();leg.position.set(a*.18,.7,0);body.add(leg);cyl(.105,.12,.5,0,-.23,0,mats.pants,leg,8);box(.25,.17,.4,0,-.49,.065,mats.shoe,leg,.055);legs.push(leg)}
+    contact(0,0,1.65,p);return {group:p,body,arms,legs};
+  }
+  const player=person(2,26,{backpack:true,shirt:mats.cream,rotation:Math.PI,scale:1.15});
+  for(const [x,z,cap,rot] of [[19,18,true,0],[-5,8.2,true,0],[20,-7,true,1.2],[22,10,true,-.8],[-12,11,false,.3],[-8.5,11,false,-.3],[-1,11.5,false,1],[3,13.5,false,-.4],[17,23,false,.7],[22,24,false,-.4]])npcs.push(person(x,z,{cap,shirt:cap?mats.green:mats.blue,backpack:!cap,rotation:rot,scale:cap?1.04:.95}));
+  // Dense, deliberately composed landscape around the clear teaching spaces.
+  function tree(x,z,s=1,type=0){const p=group(x,.2,z);p.scale.setScalar(s);cyl(.18,.27,2.3,0,1.15,0,mats.wood,p,7);const branch=cyl(.10,.14,1.2,.35,1.9,0,mats.wood,p,6);branch.rotation.z=-.6;if(type===1){for(let i=0;i<3;i++)cyl(.06,1.4-i*.22,1.8,0,2.6+i*.7,0,i%2?mats.green:mats.deepGrass,p,7)}else{const crown=ball(1.55,0,3.3,0,type===2?mats.lightGrass:mats.green,p,1);crown.scale.set(1.1,1.12,.98);ball(1.1,.8,3.55,.25,mats.lightGrass,p,0);ball(1,-.7,2.95,.3,mats.deepGrass,p,0)}contact(x,z,s*5)}
+  for(const [x,z,s,t] of [[-24,-28,1.3,0],[-24,-20,1,1],[-23,-11,1.15,0],[-24,-1,1.2,2],[-24,9,1.1,0],[-23,20,1.2,0],[-23,28,1,2],[27,-28,1.1,1],[23,-27,1.35,0],[17,-25,1.1,2],[27,-18,1.3,0],[27,-8,1,1],[28,1,1.2,0],[28,16,1.05,2],[-17,27,.95,2],[-10,28,.85,0],[10,29,.9,0],[26,27,1.1,0]])tree(x,z,s,t);
+  function shrub(x,z,s=1){const p=group(x,.2,z);p.scale.setScalar(s);ball(.65,0,.42,0,mats.deepGrass,p);ball(.55,.55,.45,.05,mats.green,p);ball(.45,-.5,.35,.1,mats.lightGrass,p);contact(x,z,2.2*s)}
+  for(let i=0;i<35;i++){const x=i<16?-21.5:26.5,z=-28+(i%16)*3.8;shrub(x,z,.7+random()*.4)}
+  for(let i=0;i<20;i++){let x=-24+i*2.65;if(Math.abs(x-2)<5)continue;shrub(x,30.3,.8+random()*.3)}
+  function planter(x,z,w=3){box(w,.45,1,x,.43,z,mats.edge,root,.15);box(w-.2,.1,.8,x,.68,z,mats.soil,root,.07);for(let a=-w/2+.5;a<w/2;a+=.65){ball(.42,x+a,.94,z,mats.green);for(let b=0;b<2;b++)sphere(.11,x+a+(b-.5)*.3,1.23,z+.08,mats.yellow)}}
+  for(const z of [18,22,26])planter(-15,z,3);planter(12,19,3);planter(12,27,3);planter(24.5,14,2);
+  for(let i=0;i<55;i++){const x=(random()-.5)*55+1,z=(random()-.5)*65-1;if(x>-20&&x<26&&z>-32&&z<28)continue;const rock=ball(.22+random()*.25,x,.27,z,mats.soil);rock.scale.y=.5}
+  // Entrance, campus path and small parking court.
+  box(9,.07,11,2,.16,30,mats.paving,root,.12);for(let z=25;z<35;z+=1.6)box(8,.015,.05,2,.205,z,mats.edge,root,0);
+  for(const x of [-3,7]){box(.3,2.2,.3,x,1.2,28,mats.woodDark);ball(.24,x,2.4,28,mats.yellow)}
+  for(const x of [-19,-14,-9,12,17,22]){box(.12,.85,.12,x,.6,32,mats.woodDark);box(4,.11,.12,x+2,.93,32,mats.wood)}
+  sign(-7,23.5,'靶場見習日','FIELD NOTES · START',undefined,4.8);bench(-19,16,Math.PI/2);bench(-19,23,Math.PI/2);
+  for(const x of [-12,11]){cyl(.08,.12,3.4,x,1.9,25,mats.woodDark);box(.6,.5,.6,x,3.7,25,mats.cream,root,.1);box(.8,.1,.8,x,4,25,mats.dark)}
+  // Ambulance parked next to first aid; recognizable rounded toy proportions.
+  const van=group(27,.2,9,-Math.PI/2);box(2.3,1.8,4.6,0,1.25,0,mats.cream,van,.25);box(2.1,.8,1.25,0,2.24,-.8,mats.cream,van,.18);box(2.02,.67,.06,0,2.2,-1.45,mats.blue,van,.06);box(2.1,.48,.06,0,1.69,2.34,mats.blue,van,.03);box(2.32,.16,4.25,0,1,0,mats.red,van,.04);box(1,.16,.3,0,2.76,-.6,mats.red,van,.05);for(const x of [-1.12,1.12])for(const z of [-1.35,1.35]){const w=cyl(.43,.43,.22,x,.45,z,mats.shoe,van,12);w.rotation.z=Math.PI/2;const rim=cyl(.22,.22,.24,x,.45,z,mats.edge,van,10);rim.rotation.z=Math.PI/2}box(.12,.62,.17,1.19,1.65,.6,mats.red,van,.01);box(.12,.18,.6,1.19,1.65,.6,mats.red,van,.01);contact(27,9,6);
+  // Wind pennants, grass tufts and small pots provide a sense of lived-in scale.
+  const flags=[];for(const [x,z] of [[12,-9],[12,7],[-18,17]]){cyl(.055,.055,3,x,1.65,z,mats.woodDark);const f=box(.85,.5,.025,x+.42,2.85,z,mats.orange);flags.push(f)}
+  const labels=[
+    {text:'目標區',x:-4,y:3.7,z:-28,quiet:true},
+    {text:'射擊線 · 清（驗）槍線',x:-4,y:1.1,z:-5,quiet:true},
+    {text:'預備線',x:-15,y:1.4,z:3,quiet:true},
+    {text:'待命線 · 著裝區',x:-5,y:3.4,z:8,station:'waiting',number:'03'},
+    {text:'配置看板',x:1,y:3.9,z:20.4,station:'map',number:'02'},
+    {text:'安全規定區',x:21,y:3.6,z:18,station:'safety',number:'01'},
+    {text:'指揮臺',x:20,y:3.5,z:-10,station:'command'},
+    {text:'預備槍 · 彈藥管制區',x:21,y:3.4,z:-2,station:'control'},
+    {text:'急救站',x:23,y:3.8,z:10,station:'medical'}
+  ];
+  // Batch repeated static shapes. Characters remain articulated, while furniture,
+  // foliage and terrain share GPU draws where their geometry and materials match.
+  root.updateMatrixWorld(true);
+  const moving=new Set([player.group,...npcs.map(n=>n.group),...flags]);
+  const buckets=new Map();
+  root.traverse(o=>{if(!o.isMesh||o.material.transparent)return;let p=o;while(p&&p!==root){if(moving.has(p))return;p=p.parent}const key=o.geometry.uuid+o.material.uuid;if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(o)});
+  for(const list of buckets.values())if(list.length>=3){const batch=new T.InstancedMesh(list[0].geometry,list[0].material,list.length);batch.castShadow=true;batch.receiveShadow=true;list.forEach((o,i)=>{batch.setMatrixAt(i,o.matrixWorld);o.removeFromParent()});batch.instanceMatrix.needsUpdate=true;root.add(batch)}
+  return {root,player,npcs,flags,labels,mats,mesh,box};
+}
+import * as T from 'three';
+
+
+
+const $=s=>document.querySelector(s);
+const eventDialog=$('#eventDialog'), notebook=$('#notebook');
+let saved=[];try{saved=normaliseProgress(JSON.parse(localStorage.getItem('field-notes-v1')||'[]'))}catch{}
+let audioEnabled=false,audioContext,toastTimer,world,renderer,scene,camera;
+let currentStation=null,nearest=null,route=[],routeStation=null,follow=innerWidth<761,zoom=1,clockTime=0;
+const keys=new Set(),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stationOrder=['safety','map','waiting'];
+function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3400)}
+function chime(success=false){if(!audioEnabled)return;try{audioContext??=new (window.AudioContext||window.webkitAudioContext)();audioContext.resume();for(const [i,f] of (success?[523,659,784]:[587]).entries()){const o=audioContext.createOscillator(),g=audioContext.createGain();o.type='sine';o.frequency.value=f;const t=audioContext.currentTime+i*.09;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.035,t+.015);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g);g.connect(audioContext.destination);o.start(t);o.stop(t+.32)}}catch{}}
+function updateProgress(){
+  const count=saved.length,next=stationOrder.find(s=>!saved.includes(s));
+  $('#progressText').textContent=$('#bookCount').textContent=`${count} / 3`;$('#progressBar').style.width=`${count/3*100}%`;
+  document.querySelectorAll('#steps button').forEach(b=>{const id=b.dataset.station;b.classList.toggle('done',saved.includes(id));b.classList.toggle('current',id===next);b.querySelector('.step-number').textContent=saved.includes(id)?'✓':String(STATIONS[id].order+1).padStart(2,'0')});
+  document.querySelectorAll('.map-label').forEach(b=>b.classList.toggle('done',saved.includes(b.dataset.station)));
+  $('#guideTip').textContent=count===3?'三份筆記收集完成！可以打開手冊，或繼續走訪旁側設施。':`下一站：${STATIONS[next].name}。點選站點卡片即可出發。`;
+  try{localStorage.setItem('field-notes-v1',JSON.stringify(saved))}catch{}
+}
+function showNotebook(){route=[];routeStation=null;keys.clear();eventDialog.close();$('#notesList').replaceChildren();for(const id of stationOrder){const card=document.createElement('article');card.className='note-card'+(saved.includes(id)?' saved':'');card.innerHTML=`<span class="stamp">${saved.includes(id)?'✳':'·'}</span><div><h3>${NOTES[id].title}</h3><p>${saved.includes(id)?NOTES[id].text:'尚未記錄 · 前往'+STATIONS[id].name+'完成見習。'}</p></div>`;$('#notesList').append(card)}notebook.showModal()}
+function complete(id){if(!saved.includes(id)){saved.push(id);updateProgress();chime(true);toast(saved.length===3?'見習完成！三份筆記已收進手冊。':'已獲得一枚見習印章。')}eventDialog.close();if(saved.length===3)showNotebook()}
+
+// Each interactive question has explanatory feedback and can be retried without penalty.
+const flows={
+  safety:[
+    {title:'歡迎，今天一起慢慢看。',body:'<p class="lead">先停在安全規定區，聽一段行前說明。</p><p>我們會先認識各區的位置和用途。看到不熟悉的標示，可以向現場工作人員詢問。</p><p>今天從這裡出發，接著看配置圖，最後找到待命線。</p>',next:'開始認識 →'},
+    {title:'從哪一件事開始？',body:'<p>你剛抵達場地，還不清楚集合與移動安排。這時最合適的做法是？</p>',answers:['先看清楚說明，向工作人員確認安排。','跟著任意一群人走，到了再問。','自行挑一個看起來空著的區域等待。'],correct:0,reason:'先確認安排，才知道自己應該在哪裡。這次遊戲會以站點提示引導你。',wrong:'你還不知道各組的安排。先聽取說明、向工作人員確認，會更清楚。'},
+    {title:'第一份筆記，完成。',body:'<p class="lead">先認識環境，再依指示行動。</p><p>接下來請到配置看板。試著把眼前的微縮場地，和課本的靶場示意圖連起來。</p><p class="source">區域名稱依據：課本 p.190–191。此情境為教學遊戲設計。</p>',finish:true}
+  ],
+  map:[
+    {title:'把場地讀成一張地圖。',body:'<p>課本示意圖把不同工作安排在不同區域。先記住主要區域的前後關係：</p><div class="mini-plan"><span class="wide">前方｜目標區</span><span class="wide">射擊線 · 清（驗）槍線</span><span>預備線</span><span>旁側｜指揮、管制</span><span>待命線（著裝區）</span><span>旁側｜急救、安全規定區</span></div><p class="source">依課本 p.190–191 整理；各靶場會因地形而有不同配置。</p>',next:'試著辨認 →'},
+    {title:'哪裡可以聽取行前說明？',body:'<p>請從剛走過的場景，找出適合進行安全說明的區域。</p>',answers:['目標區','安全規定區','預備槍管制區'],correct:1,reason:'答對了。安全規定區是本次見習聽取說明的第一站。',wrong:'回想第一站，教官是在「安全規定區」向大家說明。再選一次。'},
+    {title:'哪一區提供醫護協助？',body:'<p>同學表示身體不舒服。你先通報工作人員，並知道地圖上哪個區域與醫護協助有關？</p>',answers:['指揮臺','待命線','急救站'],correct:2,reason:'答對了。知道急救站的位置，有助於清楚表達與尋求協助。',wrong:'急救站旁有醫護標示與救護車。先回報現場人員，再依指示行動。'},
+    {title:'地圖不只是地名。',body:'<p class="lead">每一個分區，都有不同的用途。</p><p>你已辨認安全規定區與急救站。接下來走到待命線，了解它與預備線的差異。</p><p class="source">教材依據：課本 p.190–191「靶場搶先看」。</p>',finish:true}
+  ],
+  waiting:[
+    {title:'到了，這裡是待命線。',body:'<p class="lead">課本也把這裡標示為「著裝區」。</p><p>待命線與前方的預備線是不同區域。集合、著裝與接下來的移動，依現場人員安排。</p><p>在遊戲中，你可以從座椅、標示和地面分界辨識位置。</p>',next:'記住這個差別 →'},
+    {title:'哪個名稱與「著裝區」對應？',body:'<p>看一看剛才的看板，也想想課本的區域名稱。</p>',answers:['待命線','目標區','指揮臺'],correct:0,reason:'正確。課本 p.191 標示「待命線（著裝區）」。',wrong:'教材將「著裝區」放在「待命線」的括號中。再選一次。'},
+    {title:'帶著觀察，完成今天的見習。',body:'<p class="lead">認識位置，也知道各區有不同用途。</p><p>這份記錄會留在見習手冊。你還可以走訪指揮臺、管制區與急救站，閱讀簡短介紹。</p><p class="source">教材依據：課本 p.190–191。展示版不含射擊操作。</p>',finish:true}
+  ],
+  medical:[{title:'認識急救站。',body:'<p class="lead">這是與醫護協助有關的區域。</p><p>觀察醫護標示與救護車的位置。有人不舒服或需要協助時，先通報現場人員，依指示處理。</p><p class="source">區域名稱與照片依據：課本 p.191。</p>',info:true}],
+  command:[{title:'認識指揮臺。',body:'<p class="lead">觀察現場人員如何協調活動。</p><p>課本將指揮臺列為靶場的一個區域。見習時，可把「誰在說明、誰在協調」記成觀察問題。</p><p class="source">區域依據：課本 p.190。分工延伸：p.192。</p>',info:true}],
+  control:[{title:'認識兩種管制區。',body:'<p class="lead">預備槍管制區與彈藥管制區。</p><p>教材把它們列為專責人員管理的區域。遊戲中從旁側走道認識名稱與位置，器材由工作人員管理。</p><p class="source">教材依據：課本 p.190。</p>',info:true}]
+};
+function openEvent(id){
+  if(!flows[id])return;route=[];routeStation=null;keys.clear();currentStation=id;notebook.close();let page=0;
+  function render(){const item=flows[id][page];$('#eventKicker').textContent=`${STATIONS[id].name} / ${item.info?'場地觀察':'見習事件'}`;$('#eventTitle').textContent=item.title;$('#eventBody').innerHTML=item.body;$('#eventChoices').replaceChildren();$('#eventFeedback').textContent='';$('#eventFooter').innerHTML=`<span class="page-num">${String(page+1).padStart(2,'0')} / ${String(flows[id].length).padStart(2,'0')}</span>`;eventDialog.scrollTop=0;
+    function nextButton(text,fn){const b=document.createElement('button');b.textContent=text;b.addEventListener('click',fn);$('#eventFooter').append(b)}
+    if(item.answers){item.answers.forEach((a,i)=>{const b=document.createElement('button');b.textContent=String.fromCharCode(65+i)+'　'+a;b.addEventListener('click',()=>{if(i===item.correct){b.classList.add('correct');$('#eventFeedback').textContent=item.reason;$('#eventChoices').querySelectorAll('button').forEach(x=>x.disabled=true);chime();nextButton('繼續 →',()=>{page++;render()})}else{b.classList.add('wrong');$('#eventFeedback').textContent=item.wrong;b.disabled=true}});$('#eventChoices').append(b)})}
+    else if(item.finish)nextButton(saved.includes(id)?'回到場地 →':'收進見習手冊 ✓',()=>complete(id));
+    else if(item.info)nextButton('回到場地 →',()=>eventDialog.close());
+    else nextButton(item.next||'繼續 →',()=>{page++;render()});
+  }
+  render();eventDialog.showModal();chime();
+}
+function travelTo(id){if(!world||!STATIONS[id])return;const dest=STATIONS[id];const pos=world.player.group.position;const next=findPath(pos,dest);if(!next.length){toast('請先移到步道，再試一次。');return}route=next;routeStation=id;toast(`前往${dest.name}…`);chime()}
+
+document.querySelectorAll('[data-station]').forEach(b=>b.addEventListener('click',()=>travelTo(b.dataset.station)));
+document.querySelectorAll('.dialog-close').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
+$('#notebookButton').addEventListener('click',showNotebook);$('#returnButton').addEventListener('click',()=>notebook.close());
+$('#soundButton').addEventListener('click',()=>{audioEnabled=!audioEnabled;$('#soundButton').textContent='音效 '+(audioEnabled?'開':'關');$('#soundButton').setAttribute('aria-pressed',audioEnabled);$('#soundButton').setAttribute('aria-label',audioEnabled?'關閉音效':'開啟音效');chime()});
+$('#overviewButton').addEventListener('click',()=>{follow=!follow;zoom=1;$('#overviewButton').textContent=follow?'跟隨':'全景'});
+$('.brand').addEventListener('click',e=>{e.preventDefault();follow=false;zoom=1;$('#overviewButton').textContent='全景'});
+$('#restartButton').addEventListener('click',()=>{saved=[];updateProgress();if(world){world.player.group.position.set(2,.22,26);world.player.group.rotation.y=Math.PI}route=[];routeStation=null;follow=false;zoom=1;toast('新的見習開始了。請前往安全規定區。')});
+$('#interactButton').addEventListener('click',()=>{if(nearest)openEvent(nearest)});
+window.addEventListener('keydown',e=>{if(eventDialog.open||notebook.open)return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','W','A','S','D'].includes(e.key)){e.preventDefault();keys.add(e.key.toLowerCase())}if(e.key.toLowerCase()==='e'&&nearest&&!e.repeat){e.preventDefault();openEvent(nearest)}});
+window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));window.addEventListener('blur',()=>keys.clear());
+document.querySelectorAll('.mobile-pad button').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys.add(b.dataset.key.toLowerCase())});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>keys.delete(b.dataset.key.toLowerCase()))});
+
+try{
+  const stage=$('#stage');scene=new T.Scene();scene.background=new T.Color('#dbe7d4');
+  camera=new T.OrthographicCamera(-40,40,30,-30,.1,200);const cameraOffset=new T.Vector3(38,55,65),viewCenter=new T.Vector3(1,0,-1),projected=new T.Vector3();
+  renderer=new T.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.03;stage.append(renderer.domElement);
+  scene.add(new T.HemisphereLight('#fff8df','#769577',2.1));const sun=new T.DirectionalLight('#fff2ce',3.1);sun.position.set(-24,48,25);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-48,right:48,top:48,bottom:-48,near:1,far:120});sun.shadow.normalBias=.035;sun.shadow.bias=-.00015;sun.shadow.radius=3;scene.add(sun);
+  const ground=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshStandardMaterial({color:'#dbe7d4',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-1.7;ground.receiveShadow=true;scene.add(ground);
+  world=createWorld(scene);
+  const ring=new T.Mesh(new T.RingGeometry(.7,.82,40),new T.MeshBasicMaterial({color:'#fff5b9',side:T.DoubleSide,transparent:true,opacity:.85,depthWrite:false}));ring.rotation.x=-Math.PI/2;ring.position.y=.29;scene.add(ring);
+  const destination=new T.Mesh(new T.RingGeometry(.3,.43,24),new T.MeshBasicMaterial({color:'#f7d88c',side:T.DoubleSide,transparent:true,opacity:.9,depthWrite:false}));destination.rotation.x=-Math.PI/2;destination.visible=false;destination.position.y=.29;scene.add(destination);
+  const routeDots=new T.Group();scene.add(routeDots);const dotGeo=new T.CircleGeometry(.075,6),dotMat=new T.MeshBasicMaterial({color:'#fff5d0',side:T.DoubleSide,transparent:true,opacity:.8});for(let i=0;i<100;i++){const d=new T.Mesh(dotGeo,dotMat);d.rotation.x=-Math.PI/2;d.visible=false;routeDots.add(d)}
+  const labelNodes=world.labels.map(item=>{const el=document.createElement(item.station?'button':'span');el.className='map-label'+(item.station?' station':' quiet');el.innerHTML=(item.number?`<b>${item.number}</b>`:'')+item.text;if(item.station){el.dataset.station=item.station;el.addEventListener('click',()=>travelTo(item.station))}$('#labels').append(el);return {...item,el}});
+  let stageRect,baseHalf=30;
+  function resize(){stageRect=stage.getBoundingClientRect();renderer.setSize(stageRect.width,stageRect.height);baseHalf=Math.max(30,44*stageRect.height/stageRect.width);}
+  window.addEventListener('resize',resize);resize();
+  stage.addEventListener('wheel',e=>{e.preventDefault();zoom=T.MathUtils.clamp(zoom*Math.exp(-e.deltaY*.001),.72,2.1)},{passive:false});
+  const raycaster=new T.Raycaster(),mouse=new T.Vector2(),hit=new T.Vector3(),plane=new T.Plane(new T.Vector3(0,1,0),-.22);
+  let down=null;stage.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY}});stage.addEventListener('pointerup',e=>{if(!down||Math.hypot(down.x-e.clientX,down.y-e.clientY)>8)return;down=null;if(eventDialog.open||notebook.open)return;mouse.set((e.clientX-stageRect.left)/stageRect.width*2-1,-(e.clientY-stageRect.top)/stageRect.height*2+1);raycaster.setFromCamera(mouse,camera);if(!raycaster.ray.intersectPlane(plane,hit))return;if(canWalk(hit.x,hit.z)){const path=findPath(world.player.group.position,hit);if(path.length){route=path;routeStation=null}}else toast('請沿候位區與旁側步道走訪。')});
+  let last=performance.now(),labelTick=0;
+  function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-last)/1000,.04);last=now;clockTime+=dt;const p=world.player.group.position;let walking=false;const isModal=eventDialog.open||notebook.open;
+    if(!isModal){let sx=0,sz=0;if(keys.has('w')||keys.has('arrowup'))sz--;if(keys.has('s')||keys.has('arrowdown'))sz++;if(keys.has('a')||keys.has('arrowleft'))sx--;if(keys.has('d')||keys.has('arrowright'))sx++;
+      if(sx||sz){route=[];routeStation=null;const vx=sx*.863+sz*.505,vz=-sx*.505+sz*.863,len=Math.hypot(vx,vz);const dx=vx/len*5.2*dt,dz=vz/len*5.2*dt;if(canWalk(p.x+dx,p.z))p.x+=dx;if(canWalk(p.x,p.z+dz))p.z+=dz;world.player.group.rotation.y=Math.atan2(vx,vz);walking=true}
+      else if(route.length){let budget=6*dt;while(route.length&&budget>0){const t=route[0],dx=t.x-p.x,dz=t.z-p.z,dist=Math.hypot(dx,dz);if(dist<.02){route.shift();continue}world.player.group.rotation.y=Math.atan2(dx,dz);const step=Math.min(dist,budget);p.x+=dx/dist*step;p.z+=dz/dist*step;budget-=step;walking=true;if(step>=dist-.001)route.shift()}if(!route.length&&routeStation){const id=routeStation;routeStation=null;openEvent(id)}}
+    }
+    const walkPhase=clockTime*11;world.player.legs.forEach((a,i)=>a.rotation.x=walking?Math.sin(walkPhase+i*Math.PI)*.55:0);world.player.arms.forEach((a,i)=>a.rotation.x=walking?-Math.sin(walkPhase+i*Math.PI)*.5:0);world.player.body.position.y=walking&&!reducedMotion?Math.abs(Math.sin(walkPhase))*.055:0;
+    if(!reducedMotion)world.npcs.forEach((n,i)=>{n.body.position.y=Math.sin(clockTime*1.7+i)*.015});
+    ring.position.x=p.x;ring.position.z=p.z;ring.scale.setScalar(reducedMotion?1:1+Math.sin(clockTime*3)*.04);
+    destination.visible=route.length>0;if(route.length){const end=route.at(-1);destination.position.set(end.x,.29,end.z)}routeDots.children.forEach((d,i)=>{d.visible=!!route[i];if(route[i])d.position.set(route[i].x,.29,route[i].z)});
+    nearest=null;let distance=2.25;for(const [id,s]of Object.entries(STATIONS)){const d=Math.hypot(p.x-s.x,p.z-s.z);if(d<distance){distance=d;nearest=id}}
+    $('#interactButton').hidden=!nearest||isModal||route.length>0;if(nearest){$('#interactButton span').textContent='查看'+STATIONS[nearest].name;$('#locationText').textContent=STATIONS[nearest].name}else $('#locationText').textContent=p.z>24?'入口步道':p.x>13?'旁側服務走道':'候位區步道';
+    const target=follow?new T.Vector3(p.x,0,p.z-2):new T.Vector3(1,0,-1);viewCenter.lerp(target,reducedMotion?1:1-Math.exp(-dt*4));camera.position.copy(viewCenter).add(cameraOffset);camera.lookAt(viewCenter);const half=(follow?13:baseHalf)/zoom;camera.left=-half*stageRect.width/stageRect.height;camera.right=-camera.left;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();camera.updateMatrixWorld();
+    if(labelTick++%3===0){const occupied=[];for(const item of [...labelNodes].sort((a,b)=>(b.number?1:0)-(a.number?1:0))){projected.set(item.x,item.y,item.z).project(camera);const x=stageRect.left+(projected.x+1)*stageRect.width/2,y=stageRect.top+(1-projected.y)*stageRect.height/2;const width=item.el.offsetWidth||100,height=30;let visible=x>stageRect.left+width/2+5&&x<stageRect.right-width/2-5&&y>100&&y<stageRect.bottom-110&&Math.abs(projected.z)<1;if(visible){visible=!occupied.some(b=>Math.abs(x-b.x)<(width+b.width)/2+4&&Math.abs(y-b.y)<height+4);if(visible)occupied.push({x,y,width})}item.el.hidden=!visible;item.el.style.left=x+'px';item.el.style.top=y+'px'}}
+    renderer.render(scene,camera);
+  }
+  $('#overviewButton').textContent=follow?'跟隨':'全景';updateProgress();requestAnimationFrame(animate);requestAnimationFrame(()=>{$('#loading').classList.add('ready');document.body.dataset.ready='true';setTimeout(()=>$('#loading').hidden=true,600)});
+  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('#errorText').textContent='圖形連線已中斷，請重新載入展示版。';$('#errorPanel').hidden=false});
+}catch(error){console.error(error);$('#loading').hidden=true;$('#errorPanel').hidden=false;$('#errorText').textContent='無法建立 3D 場景：'+error.message+'。請使用支援 WebGL 的 Chrome 或 Edge。'}
+updateProgress();
+
+</script></body></html>

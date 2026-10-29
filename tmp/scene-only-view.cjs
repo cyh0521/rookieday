@@ -1,0 +1,18 @@
+const fs=require('fs');const root='DEMO/手繪風分檔版';
+let html=fs.readFileSync(root+'/index.html','utf8');
+html=html.replace(/<header>[\s\S]*?<\/header>/,'').replace(/<div class="hud">[\s\S]*?<\/div>/,'').replace(/<aside class="note"[\s\S]*?<\/aside>/,'').replace(/<div class="pad"[\s\S]*?<\/div>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'<span id="status" class="sr-only" role="status" aria-live="polite"></span>');
+fs.writeFileSync(root+'/index.html',html);
+let game=fs.readFileSync(root+'/game.js','utf8');
+game=game.replace(/function lockPageScroll\(\)[^\n]*\n/,'').replace(/function unlockPageScroll\(\)[^\n]*\n/,'');
+game=game.replaceAll('unlockPageScroll();','').replaceAll('lockPageScroll();','');
+game=game.replace(/function blockDialogueScroll\(event\)[^\n]*\n/,'').replace(/window.addEventListener\('wheel',blockDialogueScroll[^\n]*\n/,'');
+game=game.replace("if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End'].includes(event.key)){event.preventDefault();return;}",'');
+game=game.replace("document.getElementById('note').hidden=true;",'');
+game=game.replace("document.getElementById('note').hidden=!close;",'');
+game=game.replace(/document.getElementById\('reset'\).addEventListener[^\n]*\n/,'');
+fs.writeFileSync(root+'/game.js',game);
+let css=fs.readFileSync(root+'/style.css','utf8');css=css.slice(css.indexOf('.npc-dialogue{'));
+css=`*{box-sizing:border-box}html{overflow:auto}body{margin:0;background:#bfdcc8;font-family:"Microsoft JhengHei",sans-serif;color:#303a31;overflow:auto}main{width:100%;margin:0;padding:0}figure{position:relative;margin:0;overflow:hidden}canvas{display:block;width:100%;height:auto;touch-action:pan-y;outline:none}canvas:focus-visible{outline:2px solid #648e7b;outline-offset:-2px}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}\n`+css;
+fs.writeFileSync(root+'/style.css',css);
+fs.appendFileSync(root+'/使用說明.txt','\n純場景版：移除頁首標題、說明、場地提示、方向按鈕與頁尾，只顯示場景和 NPC 對話。保留鍵盤與點地面移動；頁面捲動恢復，對話中亦不鎖定滾輪、觸控或捲頁鍵。\n');
+console.log('Scene-only page: removed visible guidance, restored page scroll, retained NPC dialogue.');

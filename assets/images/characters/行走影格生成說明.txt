@@ -1,0 +1,1 @@
+內建 image_gen 依現有動漫角色表製作新的透明行走角色表。提示要求三列四欄：完全正面、完整側面、完全背面；每列為左腳接地、交替通過、右腳接地、反向通過四個姿勢。保留棕髮、琥珀色眼睛、軍綠制服與背包。原圖：anime-walkcycle-sheet.png。匯入：node tmp/import-anime-walkcycle.cjs <原圖路徑>。
