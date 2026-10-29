@@ -1,0 +1,1 @@
+內建 image_gen；直接參考 full-range.png 重畫藍棚、暖棕棚、救護車、靶架及器材桌。保留朝左上的背面椅子並調整色調。地面、植被、花圃與人物同步調整明暗。來源 sunlit-props-source.png。

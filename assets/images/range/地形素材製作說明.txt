@@ -1,0 +1,1 @@
+內建 image_gen。三種完整露出樹幹與根部的樹型、石砌花圃、草土地形與石板鋪面；參考 canopy.png 與 wall.png 的材質。原圖 terrain-source.png；獨立 PNG 素材。樹型及大小依世界座標固定亂數交錯使用。

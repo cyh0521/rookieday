@@ -1,0 +1,1 @@
+內建 image_gen，直接以 full-range.png 為參考。高、低混凝土擋土牆、轉角牆、岩石草坡、開花灌木、爬藤木欄。依配置交替使用高度與風化，原圖 sunlit-source.png。

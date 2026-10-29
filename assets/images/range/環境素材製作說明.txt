@@ -1,0 +1,1 @@
+內建 image_gen；參考 canopy.png 與 table.png 的細緻橄欖綠、暖褐色手繪質感。新增樹、灌木、欄杆、石牆、長椅，以及朝左上方的背面折椅。原始圖 environment-source.png；各素材獨立透明PNG。
